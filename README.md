@@ -6,7 +6,7 @@ Datensicherung auf ein NAS. Alles auf Deutsch. Jeder Kurs liegt in einem eigenen
 
 | Ordner | Art | Inhalt |
 |---|---|---|
-| [veeam-nas](veeam-nas/) | Übungsreihe | Datensicherung mit Veeam auf ein NAS |
+| [veeam-nas](veeam-nas/) | Übungsreihe | Datensicherung mit Veeam auf ein NAS, dazu Monitoring der Backup-Umgebung mit PRTG |
 
 ## Lizenz
 
