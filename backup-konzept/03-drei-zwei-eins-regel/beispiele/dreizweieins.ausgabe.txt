@@ -1,0 +1,5 @@
+Daten                    Kopien    3    2    1    +1    0  Stufe
+Dateiserver FS01              3  ja   ja   ja    ja   ja   3-2-1-1-0
+ERP-Datenbank                 2 NEIN  ja  NEIN  NEIN  ja   nicht erfüllt
+Domänencontroller DC01        2 NEIN  ja  NEIN  NEIN NEIN  nicht erfüllt
+Mailserver MAIL01             3  ja   ja   ja    ja   ja   3-2-1-1-0

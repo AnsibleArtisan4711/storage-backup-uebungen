@@ -1,0 +1,35 @@
+== Tag 1 (Erstsicherung)
+OK: 2026-11-01_0200
+== Tag 2: 5 Dateien geändert, 1 neue
+OK: 2026-11-02_0200
+== Tag 3: 1 Datei gelöscht
+OK: 2026-11-03_0200
+
+== Vorhandene Sicherungen und ihr scheinbarer Umfang (du -sh, einzeln gemessen)
+sicherung/2026-11-01_0200  1016K
+sicherung/2026-11-02_0200  1.1M
+sicherung/2026-11-03_0200  1016K
+== Gesamtbedarf auf dem Datenträger (du -sh über alle Sicherungen zusammen)
+1.2M
+
+== Hardlink-Zähler (stat -c '%h') einer unveränderten und einer geänderten Datei
+plan20.dat (unverändert): 3 Links, Inode 1663982
+plan1.dat  (Tag 2 geändert): 2 Links, Inode 1664025
+
+== Stand von plan10.dat (Tag 3 gelöscht) in den Sicherungen
+sicherung/2026-11-01_0200: vorhanden
+sicherung/2026-11-02_0200: vorhanden
+sicherung/2026-11-03_0200: fehlt
+
+== Verweis latest und Protokoll
+sicherung/latest -> 2026-11-03_0200
+2026-11-19 19:14:57 START 2026-11-01_0200 von /tmp/p35run/lab05/daten
+2026-11-19 19:14:57 OK    2026-11-01_0200 (rsync 0)
+2026-11-19 19:14:59 START 2026-11-02_0200 von /tmp/p35run/lab05/daten
+2026-11-19 19:14:59 OK    2026-11-02_0200 (rsync 0)
+2026-11-19 19:15:01 START 2026-11-03_0200 von /tmp/p35run/lab05/daten
+2026-11-19 19:15:01 OK    2026-11-03_0200 (rsync 0)
+
+== Trockenlauf: was würde sich seit der letzten Sicherung ändern?
+.d..t...... privat/
+>f+++++++++ privat/neu.txt

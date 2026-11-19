@@ -1,0 +1,11 @@
+daten,kopie,medium,ort,offline_oder_unveraenderlich,letzter_test
+Dateiserver FS01,0,ssd-raid,standort-a,nein,-
+Dateiserver FS01,1,nas,standort-a,nein,ok
+Dateiserver FS01,2,usb-festplatte,standort-b,ja,ok
+ERP-Datenbank,0,ssd-raid,standort-a,nein,-
+ERP-Datenbank,1,nas,standort-a,nein,ok
+Domänencontroller DC01,0,ssd-raid,standort-a,nein,-
+Domänencontroller DC01,1,nas,standort-a,nein,fehler
+Mailserver MAIL01,0,ssd-raid,standort-a,nein,-
+Mailserver MAIL01,1,nas,standort-a,nein,ok
+Mailserver MAIL01,2,cloud-objektspeicher,extern,ja,ok

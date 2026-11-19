@@ -1,0 +1,25 @@
+== Tag 0: Vollsicherung (Stufe 0)
+== Tag 1: inkrementell (Stufe 1 auf Stand von Tag 0) und differenziell (gegen Voll)
+== Tag 2: inkrementell und differenziell
+
+== Größen der Sicherungsdateien (Bytes)
+2055264 sicherung/tag0-voll.tar.gz
+124132 sicherung/tag1-diff.tar.gz
+124145 sicherung/tag1-inkr.tar.gz
+226861 sicherung/tag2-diff.tar.gz
+103552 sicherung/tag2-inkr.tar.gz
+
+== Dateien je Archiv
+sicherung/tag0-voll.tar.gz: 200
+sicherung/tag1-diff.tar.gz: 12
+sicherung/tag1-inkr.tar.gz: 12
+sicherung/tag2-diff.tar.gz: 22
+sicherung/tag2-inkr.tar.gz: 10
+
+== Wiederherstellung Tag 2 über die Kette Voll + Inkrementell + Inkrementell
+== Wiederherstellung Tag 2 über Voll + Differenziell
+
+== Vergleich mit dem Original (Prüfsummen)
+Kette Voll+Inkr+Inkr: identisch mit Original
+Kette Voll+Diff: identisch mit Original
+Dateien im Original: 201, in ziel-inkr: 201, in ziel-diff: 201

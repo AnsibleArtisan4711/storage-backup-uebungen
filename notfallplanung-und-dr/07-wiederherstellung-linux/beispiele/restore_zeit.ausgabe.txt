@@ -1,0 +1,8 @@
+Datenmenge: 40 MB
+== Katastrophe: Server-Ordner weg
+Summary: Restored 204 files/dirs (39.063 MiB) in 0:00
+Wiederhergestellt: 201 Dateien in 0.74 s
+Durchsatz: 54 MB/s
+== Hochrechnung auf 500 GB (nur Schätzung, lineare Annahme)
+500 GB bei 54 MB/s: 157.9 Minuten
+Laborziel 5 s: erreicht

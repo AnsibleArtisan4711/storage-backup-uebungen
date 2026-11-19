@@ -1,0 +1,7 @@
+job;system;letzter_lauf;status;dauer_min;groesse_gb;letzter_restore_test
+tar-voll;FS01;2026-11-18 02:10;OK;42;310;2026-10-30
+rsync-snapshot;WEB01;2026-11-19 01:30;OK;6;18;2026-11-02
+restic-offsite;FS01;2026-11-12 03:00;OK;95;310;2026-08-14
+wbadmin-dc;DC01;2026-11-19 00:45;FEHLER;12;0;2026-10-30
+sqlite-api;ERP-DB;2026-11-19 02:00;OK;3;22;
+mail-archiv;MAIL01;2026-11-17 23:00;OK;55;480;2026-05-02

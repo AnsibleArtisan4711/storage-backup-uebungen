@@ -1,0 +1,20 @@
+== 1. Manifest vor der Sicherung
+12
+== 2. Restore in neuen Ordner und Prüfung gegen das Manifest
+Summary: Restored 14 files/dirs (351.562 KiB) in 0:00
+Abweichungen: 0
+== 3. restic check normal, dann mit --read-data
+no errors were found
+no errors were found
+== 4. Ein Datenpaket im Repository beschädigen (1 Byte)
+check ohne --read-data: Rückgabewert 0
+no errors were found
+Pack ID does not match, want 770ac9744ba4d84d0589a4958bda7ffc9436455746460c0f678c7f28ea6de993, got 1a72b692f84175e1461781ae634c3ff7fdc830c8157961298f32051e32187452
+Fatal: repository contains errors
+check --read-data: Rückgabewert 1
+== 5. Typische Rückgabewerte
+rsync Quelle fehlt: 23
+tar Datei fehlt: 2
+tar ok: 0
+restic falsches Kennwort: 1
+restic Repository fehlt: 1

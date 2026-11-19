@@ -1,0 +1,14 @@
+Journal-Modus: DELETE
+Schreiber hat parallel gebucht; es folgen die Prüfungen der drei Sicherungen.
+
+(a) Datei blockweise kopiert integrity_check=ok   Summe der Salden=100000 (Soll 100000) Buchungen=677
+(b) Backup-API               integrity_check=ok   Summe der Salden=100000 (Soll 100000) Buchungen=1900
+(c) aus dump.sql wiederhergestellt integrity_check=ok   Summe der Salden=100000 (Soll 100000) Buchungen=4747
+
+Journal-Modus: WAL
+Schreiber hat parallel gebucht; es folgen die Prüfungen der drei Sicherungen.
+
+(a) Datei blockweise kopiert integrity_check=ok   Summe der Salden=100000 (Soll 100000) Buchungen=3438
+(b) Backup-API               integrity_check=ok   Summe der Salden=100000 (Soll 100000) Buchungen=3827
+(c) aus dump.sql wiederhergestellt integrity_check=ok   Summe der Salden=100000 (Soll 100000) Buchungen=3835
+

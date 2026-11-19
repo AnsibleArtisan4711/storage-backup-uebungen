@@ -1,0 +1,86 @@
+== restic init
+created restic repository da98dd2322 at /tmp/p35run/lab07/repo
+
+Please note that knowledge of your password is required to access
+the repository. Losing your password means that your data is
+irrecoverably lost.
+== Sicherung 1
+Files:          31 new,     0 changed,     0 unmodified
+Dirs:            2 new,     0 changed,     0 unmodified
+Added to the repository: 1.476 MiB (1.470 MiB stored)
+
+processed 31 files, 1.465 MiB in 0:00
+snapshot d0b73f1b saved
+== 3 Dateien geändert, 1 neue; Sicherung 2
+Files:           1 new,     3 changed,    28 unmodified
+Dirs:            0 new,     2 changed,     0 unmodified
+Added to the repository: 212.215 KiB (202.812 KiB stored)
+
+processed 32 files, 1.514 MiB in 0:00
+snapshot 64f1609e saved
+== Sicherung 3 ohne Änderung (alles bereits vorhanden)
+Files:           0 new,     0 changed,    32 unmodified
+Dirs:            0 new,     0 changed,     2 unmodified
+Added to the repository: 0 B   (0 B   stored)
+
+processed 32 files, 1.514 MiB in 0:00
+snapshot 5bae04b8 saved
+== snapshots
+ID        Time                 Host        Tags        Paths
+------------------------------------------------------------------------------
+d0b73f1b  2026-11-19 19:17:23  vm          lab         /tmp/p35run/lab07/daten
+64f1609e  2026-11-19 19:17:25  vm          lab         /tmp/p35run/lab07/daten
+5bae04b8  2026-11-19 19:17:26  vm          lab         /tmp/p35run/lab07/daten
+------------------------------------------------------------------------------
+3 snapshots
+== diff zwischen Sicherung 1 und 2
+M    /daten/projekte/modell1.bin
+M    /daten/projekte/modell2.bin
+M    /daten/projekte/modell3.bin
++    /daten/projekte/modell31.bin
+
+Files:           1 new,     0 removed,     3 changed
+Dirs:            0 new,     0 removed
+Others:          0 new,     0 removed
+Data Blobs:      4 new,     3 removed
+Tree Blobs:      3 new,     3 removed
+  Added:   212.215 KiB
+  Removed: 161.855 KiB
+== stats (Wiederherstellungsgröße und Platzbedarf im Repository)
+scanning...
+Stats in restore-size mode:
+     Snapshots processed:  1
+        Total File Count:  34
+              Total Size:  1.514 MiB
+scanning...
+Stats in raw-data mode:
+     Snapshots processed:  3
+        Total Blob Count:  41
+ Total Uncompressed Size:  1.685 MiB
+              Total Size:  1.666 MiB
+    Compression Progress:  100.00%
+       Compression Ratio:  1.01x
+Compression Space Saving:  1.12%
+== Dateien im Repository: Aufbau
+config
+data
+index
+keys
+locks
+snapshots
+4
+== Wiederherstellung der letzten Sicherung nach ziel/ und Vergleich
+restoring <Snapshot 5bae04b8 of [/tmp/p35run/lab07/daten] at 2026-11-19 19:17:26.411211127 +0100 CET by root@vm> to ziel
+Summary: Restored 34 files/dirs (1.514 MiB) in 0:00
+Wiederherstellung identisch mit dem Original
+== Falsches Kennwort
+Fatal: wrong password or no key found
+== check
+using temporary cache in /tmp/restic-check-cache-1948957941
+create exclusive lock for repository
+load indexes
+check all packs
+check snapshots, trees and blobs
+[0:00] 100.00%  3 / 3 snapshots
+
+no errors were found

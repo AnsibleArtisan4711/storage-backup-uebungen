@@ -1,0 +1,42 @@
+Helfer: 1
+Stufe 1: Netzwerk
+Stufe 2: Speicher, DNS-DHCP
+Stufe 3: DC01
+Stufe 4: PBX, ERP-DB, MAIL01, FS01
+Stufe 5: WEB01, ERP-App
+
+System    hängt ab von               fertig nach      RTO  Ergebnis
+Netzwerk  -                               0.5 h      1 h  ok
+Speicher  Netzwerk                        1.2 h      1 h  RTO VERFEHLT
+DNS-DHCP  Netzwerk                        1.6 h      2 h  ok
+DC01      Netzwerk,Speicher               2.6 h      2 h  RTO VERFEHLT
+PBX       Netzwerk,DC01                   3.1 h      2 h  RTO VERFEHLT
+ERP-DB    Speicher,DC01                   5.1 h      8 h  ok
+MAIL01    DC01,Speicher                   7.6 h     12 h  ok
+FS01      DC01,Speicher                  10.6 h     12 h  ok
+WEB01     Netzwerk,DNS-DHCP,ERP-DB       11.2 h      4 h  RTO VERFEHLT
+ERP-App   ERP-DB,DC01                    12.0 h      8 h  RTO VERFEHLT
+
+Gesamtdauer: 12.0 h; 5 von 10 Systemen verfehlen den RTO.
+
+Helfer: 2
+Stufe 1: Netzwerk
+Stufe 2: Speicher, DNS-DHCP
+Stufe 3: DC01
+Stufe 4: PBX, ERP-DB, MAIL01, FS01
+Stufe 5: WEB01, ERP-App
+
+System    hängt ab von               fertig nach      RTO  Ergebnis
+Netzwerk  -                               0.5 h      1 h  ok
+DNS-DHCP  Netzwerk                        0.8 h      2 h  ok
+Speicher  Netzwerk                        1.2 h      1 h  RTO VERFEHLT
+DC01      Netzwerk,Speicher               2.2 h      2 h  RTO VERFEHLT
+PBX       Netzwerk,DC01                   2.8 h      2 h  RTO VERFEHLT
+ERP-DB    Speicher,DC01                   4.2 h      8 h  ok
+MAIL01    DC01,Speicher                   5.2 h     12 h  ok
+WEB01     Netzwerk,DNS-DHCP,ERP-DB        5.9 h      4 h  RTO VERFEHLT
+ERP-App   ERP-DB,DC01                     6.7 h      8 h  ok
+FS01      DC01,Speicher                   7.2 h     12 h  ok
+
+Gesamtdauer: 7.2 h; 4 von 10 Systemen verfehlen den RTO.
+

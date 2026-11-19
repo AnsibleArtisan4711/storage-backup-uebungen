@@ -1,0 +1,10 @@
+Stichtag 2026-11-19
+
+ID  Maßnahme                                             fällig     Status     Priorität Bewertung
+M3  Backup-Katalog automatisch prüfen (Monitoring)       2026-11-10 offen      mittel    ÜBERFÄLLIG seit 9 Tagen
+M2  Passwort-Tresor offline exportieren und sicher lager 2026-12-01 erledigt   hoch      erledigt
+M1  Vertretung IT-Leitung benennen und in Alarmkette ein 2026-12-15 offen      hoch      in 26 Tagen fällig
+M4  Handbuch um Kommunikation und Datenschutz ergänzen   2027-01-31 offen      mittel    in 73 Tagen fällig
+M5  Restore-Test ERP-DB vierteljährlich                  2027-03-31 in Arbeit  niedrig   in 132 Tagen fällig
+
+Status: erledigt 1, in Arbeit 1, offen 3 | überfällig: 1

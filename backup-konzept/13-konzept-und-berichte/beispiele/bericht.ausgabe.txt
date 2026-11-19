@@ -1,0 +1,11 @@
+Backup-Bericht, Stichtag 2026-11-19 08:00
+Job             System   Ergebnis  Befund
+tar-voll        FS01     PRÜFEN    letzter Lauf 30 h her (max. 26)
+rsync-snapshot  WEB01    OK        
+restic-offsite  FS01     PRÜFEN    letzter Lauf 173 h her (max. 26); Restore-Test 97 Tage alt (max. 90)
+wbadmin-dc      DC01     PRÜFEN    Lauf fehlgeschlagen
+sqlite-api      ERP-DB   PRÜFEN    noch nie ein Restore-Test
+mail-archiv     MAIL01   PRÜFEN    letzter Lauf 33 h her (max. 26); Restore-Test 201 Tage alt (max. 90)
+
+5 Jobs mit Befund.
+Rückgabewert: 1

@@ -1,0 +1,9 @@
+Ziele: RTO 8 h, RPO 4 h, Schaden 2500 EUR/h
+
+Variante                  EUR/Jahr  Start h  Verlust Ziel          Betrieb   Schaden/Fall
+Kalt                          4800      168       24 verfehlt      niedrig       420000 EUR
+Warm                         26400        8       24 verfehlt       mittel        20000 EUR
+Heiß                         90000      0.5      0.1 erfüllt          hoch         1250 EUR
+Cloud-Wiederherstellung      13200        6        4 erfüllt        mittel        15000 EUR
+
+Günstigste Variante, die beide Ziele erfüllt: Cloud-Wiederherstellung (13200 EUR/Jahr)

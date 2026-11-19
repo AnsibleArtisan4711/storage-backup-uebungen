@@ -1,0 +1,6 @@
+DR-Gesamtprüfung, Stichtag 2026-11-19
+ - System ERP aus der BIA fehlt in den Abhängigkeiten
+ - Rolle 'Datenschutzbeauftragte' ohne Vertretung
+ - Rolle 'Dienstleister Rechenzentrum' ohne Vertretung
+ - Maßnahme M3 überfällig
+4 Befund(e).

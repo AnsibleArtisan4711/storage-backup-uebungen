@@ -1,0 +1,67 @@
+== 40 tägliche Sicherungen ab 2026-01-01 anlegen (mit --time)
+52dc0294  2026-02-09 03:00:00  vm
+-------------------------------------------
+40 snapshots
+== Trockenlauf: 7 täglich, 4 wöchentlich, 1 monatlich
+Applying Policy: keep 7 daily, 4 weekly, 1 monthly snapshots
+keep 9 snapshots:
+ID        Time                 Host        Tags        Reasons           Paths
+------------------------------------------------------------------------------------------------
+e30ce5fe  2026-01-25 03:00:00  vm                      weekly snapshot   /tmp/p35run/lab08/daten
+dfb1584e  2026-02-01 03:00:00  vm                      weekly snapshot   /tmp/p35run/lab08/daten
+47109fe7  2026-02-03 03:00:00  vm                      daily snapshot    /tmp/p35run/lab08/daten
+847e3438  2026-02-04 03:00:00  vm                      daily snapshot    /tmp/p35run/lab08/daten
+82c57d41  2026-02-05 03:00:00  vm                      daily snapshot    /tmp/p35run/lab08/daten
+2f3961ed  2026-02-06 03:00:00  vm                      daily snapshot    /tmp/p35run/lab08/daten
+cb91b07b  2026-02-07 03:00:00  vm                      daily snapshot    /tmp/p35run/lab08/daten
+f2b45da4  2026-02-08 03:00:00  vm                      daily snapshot    /tmp/p35run/lab08/daten
+                                                       weekly snapshot
+52dc0294  2026-02-09 03:00:00  vm                      daily snapshot    /tmp/p35run/lab08/daten
+                                                       weekly snapshot
+                                                       monthly snapshot
+------------------------------------------------------------------------------------------------
+9 snapshots
+remove 31 snapshots:
+ID        Time                 Host        Tags        Paths
+------------------------------------------------------------------------------
+09cbf443  2026-01-01 03:00:00  vm                      /tmp/p35run/lab08/daten
+0f0f7a07  2026-01-02 03:00:00  vm                      /tmp/p35run/lab08/daten
+7e22a946  2026-01-03 03:00:00  vm                      /tmp/p35run/lab08/daten
+9b3e2feb  2026-01-04 03:00:00  vm                      /tmp/p35run/lab08/daten
+d3158ecf  2026-01-05 03:00:00  vm                      /tmp/p35run/lab08/daten
+5375bdd3  2026-01-06 03:00:00  vm                      /tmp/p35run/lab08/daten
+3f237ce3  2026-01-07 03:00:00  vm                      /tmp/p35run/lab08/daten
+13dacf9e  2026-01-08 03:00:00  vm                      /tmp/p35run/lab08/daten
+ac913a15  2026-01-09 03:00:00  vm                      /tmp/p35run/lab08/daten
+b73a5446  2026-01-10 03:00:00  vm                      /tmp/p35run/lab08/daten
+809d5bd1  2026-01-11 03:00:00  vm                      /tmp/p35run/lab08/daten
+cdc0c4c4  2026-01-12 03:00:00  vm                      /tmp/p35run/lab08/daten
+6d088df7  2026-01-13 03:00:00  vm                      /tmp/p35run/lab08/daten
+9b891d86  2026-01-14 03:00:00  vm                      /tmp/p35run/lab08/daten
+5b163631  2026-01-15 03:00:00  vm                      /tmp/p35run/lab08/daten
+de309a45  2026-01-16 03:00:00  vm                      /tmp/p35run/lab08/daten
+14df2370  2026-01-17 03:00:00  vm                      /tmp/p35run/lab08/daten
+fa3214d1  2026-01-18 03:00:00  vm                      /tmp/p35run/lab08/daten
+8d5e598c  2026-01-19 03:00:00  vm                      /tmp/p35run/lab08/daten
+7a0904c1  2026-01-20 03:00:00  vm                      /tmp/p35run/lab08/daten
+aaf8ddb5  2026-01-21 03:00:00  vm                      /tmp/p35run/lab08/daten
+cf6a70e2  2026-01-22 03:00:00  vm                      /tmp/p35run/lab08/daten
+3c26e63f  2026-01-23 03:00:00  vm                      /tmp/p35run/lab08/daten
+f9a04da3  2026-01-24 03:00:00  vm                      /tmp/p35run/lab08/daten
+2a41792b  2026-01-26 03:00:00  vm                      /tmp/p35run/lab08/daten
+750bc4ad  2026-01-27 03:00:00  vm                      /tmp/p35run/lab08/daten
+c32254cc  2026-01-28 03:00:00  vm                      /tmp/p35run/lab08/daten
+1eb16cf2  2026-01-29 03:00:00  vm                      /tmp/p35run/lab08/daten
+c9f94d66  2026-01-30 03:00:00  vm                      /tmp/p35run/lab08/daten
+339c1563  2026-01-31 03:00:00  vm                      /tmp/p35run/lab08/daten
+7c50e9e0  2026-02-02 03:00:00  vm                      /tmp/p35run/lab08/daten
+------------------------------------------------------------------------------
+31 snapshots
+Would have removed the following snapshots:
+{09cbf443 0f0f7a07 13dacf9e 14df2370 1eb16cf2 2a41792b 339c1563 3c26e63f 3f237ce3 5375bdd3 5b163631 6d088df7 750bc4ad 7a0904c1 7c50e9e0 7e22a946 809d5bd1 8d5e598c 9b3e2feb 9b891d86 aaf8ddb5 ac913a15 b73a5446 c32254cc c9f94d66 cdc0c4c4 cf6a70e2 d3158ecf de309a45 f9a04da3 fa3214d1}
+== Echt ausführen mit --prune
+f2b45da4  2026-02-08 03:00:00  vm
+52dc0294  2026-02-09 03:00:00  vm
+-------------------------------------------
+9 snapshots
+no errors were found

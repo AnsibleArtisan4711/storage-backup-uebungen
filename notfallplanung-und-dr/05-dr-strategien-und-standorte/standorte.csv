@@ -1,0 +1,5 @@
+variante;beschreibung;kosten_monat_eur;wiederanlauf_h;datenverlust_h;aufwand_betrieb
+Kalt;Leerer Ersatzraum, Hardware wird bei Bedarf beschafft;400;168;24;niedrig
+Warm;Vorhandene Hardware, Daten täglich repliziert;2200;8;24;mittel
+Heiß;Laufende Zweitumgebung, kontinuierliche Replikation;7500;0.5;0.1;hoch
+Cloud-Wiederherstellung;Images im Cloud-Speicher, VMs starten bei Bedarf;1100;6;4;mittel

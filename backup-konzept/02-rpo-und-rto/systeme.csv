@@ -1,0 +1,7 @@
+system,beschreibung,daten_gb,sicherungsintervall_h,rpo_ziel_h,rto_ziel_h,restore_mb_pro_s,vorarbeit_h
+DC01,Domänencontroller,40,24,24,4,80,1.0
+FS01,Dateiserver,800,24,24,8,100,0.5
+ERP-DB,Datenbank des Warenwirtschaftssystems,250,4,1,4,100,1.5
+MAIL01,Mailserver,300,12,8,6,90,1.0
+WEB01,Webserver der Firma,20,24,48,12,80,0.5
+PRINT01,Druckserver,15,168,168,24,80,0.5

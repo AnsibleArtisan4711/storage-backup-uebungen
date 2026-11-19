@@ -1,0 +1,8 @@
+prozess;system;ausfall_kosten_eur_h;mtpd_h;rto_h;rpo_h;kritisch_ab_h
+Auftragsannahme;ERP;1800;24;8;1;4
+Lohnabrechnung;ERP;300;120;48;24;72
+Anmeldung Mitarbeiter;DC01;1200;8;2;4;1
+E-Mail;MAIL01;400;48;12;4;8
+Webshop;WEB01;2500;12;4;1;2
+Dateiablage;FS01;600;48;12;24;8
+Telefonie;PBX;900;8;2;24;2

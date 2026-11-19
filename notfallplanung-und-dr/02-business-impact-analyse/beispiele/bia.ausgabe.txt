@@ -1,0 +1,11 @@
+Prozess                System  RTO h  MTPD RPO h Klasse Schaden bis RTO
+Anmeldung Mitarbeiter  DC01        2     8     4 A            2400 EUR
+Telefonie              PBX         2     8    24 A            1800 EUR
+Webshop                WEB01       4    12     1 A           10000 EUR
+Auftragsannahme        ERP         8    24     1 B           14400 EUR
+E-Mail                 MAIL01     12    48     4 B            4800 EUR
+Dateiablage            FS01       12    48    24 B            7200 EUR
+Lohnabrechnung         ERP        48   120    24 C           14400 EUR
+   Hinweis: Lohnabrechnung wird erst nach 72 h kritisch, RTO 48 h ist enger als nötig
+
+Wiederanlauf-Reihenfolge nach engstem RTO: DC01 > PBX > WEB01 > ERP > MAIL01 > FS01

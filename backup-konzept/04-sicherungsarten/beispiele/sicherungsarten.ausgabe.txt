@@ -1,0 +1,15 @@
+Daten: 500 GB, Änderung: 3.0 % pro Tag (15.0 GB), Zyklus: 1 Voll + 7 Tage
+
+Strategie       Zyklus (GB)    Letzter Tag Wiederherstellung am letzten Tag
+nur voll             4000.0       500.0 GB          1 Satz (1 Voll)
+inkrementell          605.0        15.0 GB 8 Sätze (1 Voll + 7 Inkr.)
+differenziell         920.0       105.0 GB 2 Sätze (1 Voll + 1 Diff.)
+
+Tag  inkrementell(GB)  differenziell(GB)
+  1              15.0               15.0
+  2              15.0               30.0
+  3              15.0               45.0
+  4              15.0               60.0
+  5              15.0               75.0
+  6              15.0               90.0
+  7              15.0              105.0

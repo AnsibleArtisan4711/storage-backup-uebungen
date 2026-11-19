@@ -1,0 +1,27 @@
+== Sicherung auf beide Ziele
+chattr +i gesetzt auf ziel_geschuetzt
+----i---------e------- ziel_geschuetzt
+----i---------e------- ziel_geschuetzt/akte1.txt
+== 'Angriff': Produktivdaten werden überschrieben und umbenannt
+akte1.txt.locked
+akte2.txt.locked
+akte3.txt.locked
+== Die nächste planmäßige Sicherung läuft (Spiegel mit --delete) und verbreitet den Schaden
+ziel_offen:
+akte1.txt.locked
+akte2.txt.locked
+akte3.txt.locked
+ziel_geschuetzt:
+rsync: [generator] delete_file: unlink(akte3.txt) failed: Operation not permitted (1)
+rsync: [generator] delete_file: unlink(akte2.txt) failed: Operation not permitted (1)
+rsync: [generator] delete_file: unlink(akte1.txt) failed: Operation not permitted (1)
+akte1.txt
+akte2.txt
+akte3.txt
+== Löschversuch auf dem geschützten Ziel (auch als root)
+rm: cannot remove 'ziel_geschuetzt/akte1.txt': Operation not permitted
+Rückgabewert rm: 1
+== Wiederherstellung aus dem geschützten Ziel
+Wichtige Daten 1
+== Aufräumen (Attribut entfernen, sonst lässt sich der Ordner nicht löschen)
+chattr -i ok

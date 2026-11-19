@@ -1,0 +1,9 @@
+Prüfung von handbuch.md (Stichtag 2026-11-19)
+ - Abschnitt fehlt: Kommunikation
+ - Abschnitt fehlt: Datenschutz
+ - Abschnitt fehlt: Übung
+ - Verweis auf Aushang/Intranet: im Notfall evtl. nicht erreichbar, Kopie offline beilegen
+ - Keine Telefonnummern im Dokument
+ - Schritt ohne Prüfkriterium: 'Neue VM aus Vorlage erstellen.'
+ - Schritt ohne Prüfkriterium: 'Daten mit restic zurückspielen.'
+7 Befund(e).

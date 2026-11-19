@@ -1,0 +1,17 @@
+Nr  Schritt                                     Soll   Ist    Abw.  Bewertung
+1   Alarm ausgelöst, Bereitschaft erreicht        10    12     20%  ok
+2   Krisenstab versammelt                         30    55     83%  ZU LANGSAM
+3   Lagebild erstellt, Systemumfang geklärt       60    75     25%  ZU LANGSAM
+4   Netzwerk und Speicher wiederhergestellt       90   150     67%  ZU LANGSAM
+5   DC01 wiederhergestellt                       150   260     73%  ZU LANGSAM
+6   ERP-DB wiederhergestellt                     300   290     -3%  ok
+7   Mitarbeiterinformation versendet             120     -       -  NICHT DURCHGEFÜHRT
+
+Maßnahmenvorschläge aus der Übung (Quelle für Modul 11):
+  Schritt 2: Vertretung IT-Leitung nicht erreichbar
+  Schritt 3: Ursache klären
+  Schritt 4: Passwort-Tresor nur online erreichbar
+  Schritt 5: Backup-Katalog veraltet
+  Schritt 7: nicht durchgeführt
+
+5 von 7 Schritten auffällig.

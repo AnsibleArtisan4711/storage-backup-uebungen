@@ -1,0 +1,16 @@
+ID  Szenario                                 brutto Klasse   netto Klasse 
+R2  Ransomware auf Dateiablage                   15 hoch         6 niedrig
+R5  Fehlkonfiguration beim Änderungsvorgang      12 mittel       6 niedrig
+R3  Stromausfall im Serverraum                    9 mittel       4 niedrig
+R1  Ausfall Festplatte im Dateiserver             8 mittel       2 niedrig
+R7  Ausfall Dienstleister Cloud                   8 mittel       6 niedrig
+R6  Ausfall Internetanbindung                     6 niedrig      2 niedrig
+R4  Brand im Serverraum                           5 niedrig      4 niedrig
+
+Matrix netto (Zeilen Schaden 5..1, Spalten Wahrscheinlichkeit 1..5):
+S5 |          |          |          |          |         
+S4 | R4       |          |          |          |         
+S3 |          | R2,R7    |          |          |         
+S2 |          | R3       | R5       |          |         
+S1 |          | R1,R6    |          |          |         
+     W1         W2         W3         W4         W5      

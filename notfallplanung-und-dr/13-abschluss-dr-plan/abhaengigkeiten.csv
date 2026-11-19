@@ -1,0 +1,11 @@
+system;haengt_ab_von;wiederherstellung_min;rto_h
+Netzwerk;;30;1
+Speicher;Netzwerk;45;1
+DC01;Netzwerk,Speicher;60;2
+DNS-DHCP;Netzwerk;20;2
+PBX;Netzwerk,DC01;30;2
+ERP-DB;Speicher,DC01;120;8
+ERP-App;ERP-DB,DC01;45;8
+WEB01;Netzwerk,DNS-DHCP,ERP-DB;40;4
+MAIL01;DC01,Speicher;150;12
+FS01;DC01,Speicher;180;12

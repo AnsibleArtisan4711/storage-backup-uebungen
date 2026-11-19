@@ -1,0 +1,41 @@
+== 1. gpg symmetrisch (AES256)
+10240 daten.tar
+265 daten.tar.gpg
+-- Klartext im Archiv sichtbar?  (grep im verschlüsselten Archiv)
+0
+-- Entschlüsseln mit richtigem Kennwort
+identisch
+-- Entschlüsseln mit falschem Kennwort
+Rückgabewert: 2
+gpg: decryption failed: Bad session key
+
+== 2. openssl enc (AES-256-CBC, PBKDF2, 600000 Iterationen)
+identisch
+-- gpg: ein Byte im Chiffrat geändert (gpg meldet den Fehler)
+gpg Rückgabewert: 2
+gpg: Fatal: zlib inflate problem: invalid distance too far back
+
+== 3. restic: mehrere Schlüssel, Schlüssel entfernen
+ ID        User  Host  Created
+------------------------------------------
+*92b1f43e  root  vm    2026-11-19 19:19:40
+------------------------------------------
+saved new key as <Key of root@vm, created on 2026-11-19 19:19:44.814643987 +0100 CET m=+2.737421879>
+ ID        User  Host  Created
+------------------------------------------
+*92b1f43e  root  vm    2026-11-19 19:19:40
+ 3a4ce640  root  vm    2026-11-19 19:19:44
+------------------------------------------
+-- Zugriff mit Kennwort B
+-------------------------------------------
+1 snapshots
+-- Schlüssel A entfernen (Anmeldung mit B)
+zu entfernender Schlüssel: 92b1f43e
+removed key 92b1f43e472bea9862886b697e49f6689a0010424bd3b622d6522b7198a454fc
+-- Zugriff mit A nach dem Entfernen
+Fatal: wrong password or no key found
+-- Schlüsselliste jetzt
+ ID        User  Host  Created
+------------------------------------------
+*3a4ce640  root  vm    2026-11-19 19:19:44
+------------------------------------------

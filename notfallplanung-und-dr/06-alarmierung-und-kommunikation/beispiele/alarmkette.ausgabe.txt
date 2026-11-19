@@ -1,0 +1,20 @@
+Nicht erreichbar: niemand
+
+Stufe 1 Bereitschaft IT              Minute   5  erreicht: Anna Beispiel (Hauptperson)
+Stufe 2 IT-Leitung                   Minute  10  erreicht: Clara Muster (Hauptperson)
+Stufe 3 Geschäftsführung             Minute  15  erreicht: Emil Beispiel (Hauptperson)
+Stufe 4 Datenschutzbeauftragte       Minute  20  erreicht: Gerda Muster (Hauptperson)
+Stufe 5 Dienstleister Rechenzentrum  Minute  25  erreicht: Support Hotline (Hauptperson)
+
+Kette nach 25 Minuten abgeschlossen, 0 Stufe(n) ohne Ergebnis.
+
+Nicht erreichbar: Clara Muster, Daniel Probe, Gerda Muster
+
+Stufe 1 Bereitschaft IT              Minute   5  erreicht: Anna Beispiel (Hauptperson)
+Stufe 2 IT-Leitung                   Minute  15  NIEMAND ERREICHT
+Stufe 3 Geschäftsführung             Minute  20  erreicht: Emil Beispiel (Hauptperson)
+Stufe 4 Datenschutzbeauftragte       Minute  25  NIEMAND ERREICHT
+Stufe 5 Dienstleister Rechenzentrum  Minute  30  erreicht: Support Hotline (Hauptperson)
+
+Kette nach 30 Minuten abgeschlossen, 2 Stufe(n) ohne Ergebnis.
+Befund: Lücke in der Kette. Vertretung benennen oder Rolle doppelt besetzen.

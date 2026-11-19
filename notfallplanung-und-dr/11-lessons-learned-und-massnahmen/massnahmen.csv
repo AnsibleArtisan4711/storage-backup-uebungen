@@ -1,0 +1,6 @@
+id;massnahme;quelle;verantwortlich;faellig;status;prioritaet
+M1;Vertretung IT-Leitung benennen und in Alarmkette eintragen;Übung 2026-11;Rolle IT-Leitung;2026-12-15;offen;hoch
+M2;Passwort-Tresor offline exportieren und sicher lagern;Übung 2026-11;Rolle Bereitschaft IT;2026-12-01;erledigt;hoch
+M3;Backup-Katalog automatisch prüfen (Monitoring);Übung 2026-11;Rolle Bereitschaft IT;2026-11-10;offen;mittel
+M4;Handbuch um Kommunikation und Datenschutz ergänzen;Handbuchprüfung;Rolle IT-Leitung;2027-01-31;offen;mittel
+M5;Restore-Test ERP-DB vierteljährlich;Risikoanalyse;Rolle Bereitschaft IT;2027-03-31;in Arbeit;niedrig

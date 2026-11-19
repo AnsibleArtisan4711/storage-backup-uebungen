@@ -1,0 +1,19 @@
+Lagebild: Angriff=aktiv, Backup=backup_unklar, AD=ad_betroffen
+
+1. Betroffene Systeme vom Netz trennen (Netzwerk-Port/VLAN sperren), Ausschalten nur nach Absprache (flüchtige Spuren gehen verloren; Vorgehen mit IT-Forensik/Rechtsberatung klären)
+2. Entscheidungsträger und Datenschutzbeauftragte informieren (Meldefristen prüfen lassen, Rechtsberatung einbeziehen)
+3. Beweissicherung: Logs und Abbilder der betroffenen Systeme auf getrenntes Medium kopieren
+4. Backups schreibgeschützt halten, Prüfung auf Befall im isolierten Netz, ältere Stände heranziehen
+5. Active Directory als kompromittiert behandeln: sauberen Neuaufbau planen, alle Kennwörter und Dienstkonten erneuern
+6. Systeme in der Wiederanlauf-Reihenfolge (Modul 04) sauber neu aufbauen, nicht betroffene Systeme vor der Wiederinbetriebnahme auf Befall prüfen
+7. Erst nach Freigabe und Überwachungsphase den Normalbetrieb melden
+8. Lessons Learned und Maßnahmenverfolgung (Modul 11)
+
+Lagebild: Angriff=abgeschlossen, Backup=backup_sauber, AD=ad_ok
+
+1. Entscheidungsträger und Datenschutzbeauftragte informieren (Meldefristen prüfen lassen, Rechtsberatung einbeziehen)
+2. Beweissicherung: Logs und Abbilder der betroffenen Systeme auf getrenntes Medium kopieren
+3. Backup-Zeitpunkt vor dem Angriff bestimmen (Logs, Eintrittszeit), Restore in isoliertes Netz testen
+4. Systeme in der Wiederanlauf-Reihenfolge (Modul 04) sauber neu aufbauen, nicht betroffene Systeme vor der Wiederinbetriebnahme auf Befall prüfen
+5. Erst nach Freigabe und Überwachungsphase den Normalbetrieb melden
+6. Lessons Learned und Maßnahmenverfolgung (Modul 11)
