@@ -1,0 +1,27 @@
+
+## 1. Erster Snapshot und vollständige Übertragung (schreibgeschützter Snapshot ist Pflicht)
+$ btrfs subvolume snapshot -r /tmp/p34/q/daten /tmp/p34/q/.snap/s1
+Create a readonly snapshot of '/tmp/p34/q/daten' in '/tmp/p34/q/.snap/s1'
+Größe des Datenstroms (voll): 20988867 Bytes (Daten 20 MiB = 20971520, plus Verwaltung)
+$ btrfs receive -q -f /tmp/p34/s1.strom /tmp/p34/z/sicherung
+s1
+
+## 2. Änderung: 1 MiB der großen Datei und die Notiz ändern, zweiter Snapshot
+$ btrfs subvolume snapshot -r /tmp/p34/q/daten /tmp/p34/q/.snap/s2
+Create a readonly snapshot of '/tmp/p34/q/daten' in '/tmp/p34/q/.snap/s2'
+
+## 3. Inkrementelle Übertragung mit -p (Elternsnapshot s1): nur die Unterschiede
+Größe des Datenstroms (inkrementell): 1049732 Bytes (statt 20988867)
+$ btrfs receive -q -f /tmp/p34/s2.strom /tmp/p34/z/sicherung
+s1
+s2
+
+## 4. Vergleich: Ziel stimmt mit der Quelle überein
+s1: Prüfsumme Quelle 9454e699, Ziel 9454e699 -> gleich
+s2: Prüfsumme Quelle 5f807d6a, Ziel 5f807d6a -> gleich
+Notiz im Ziel (s1): Version 1; (s2): Version 2
+
+## 5. Die Snapshots im Ziel sind schreibgeschützt und teilen Blöcke (Platz)
+     Total   Exclusive  Set shared  Filename
+  20.00MiB       0.00B    20.00MiB  /tmp/p34/z/sicherung/s1
+  20.00MiB       0.00B    20.00MiB  /tmp/p34/z/sicherung/s2

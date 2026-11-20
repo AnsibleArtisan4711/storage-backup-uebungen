@@ -1,0 +1,29 @@
+
+## 1. Fehlerhafte Änderung (z. B. misslungenes Update)
+config.txt
+zufall.txt
+
+## 2. Rollback: beschreibbaren Klon des Snapshots anlegen und das alte Subvolume ersetzen
+$ btrfs subvolume snapshot .snap/stand1 daten-neu
+Create a snapshot of '.snap/stand1' in './daten-neu'
+$ mv daten daten-defekt
+$ mv daten-neu daten
+config.txt
+daten.txt
+Konfiguration Stand 1
+
+## 3. Das defekte Subvolume sichern (zur Analyse) oder löschen
+ID 256 top level 5 path daten-defekt
+ID 257 top level 5 path .snap/stand1
+ID 258 top level 5 path daten
+$ btrfs subvolume delete daten-defekt
+Delete subvolume 256 (no-commit): '/tmp/p34/mnt/daten-defekt'
+
+## 4. Alternative: Standard-Subvolume wechseln (btrfs subvolume set-default), das gebootet bzw. eingebunden wird
+ID des Snapshots stand1: 257
+Befehl (Beispiel, hier nicht ausgeführt): btrfs subvolume set-default 257 /Einhängepunkt
+
+## 5. Wichtig: Der Snapshot bleibt unverändert und kann weiter als Rückfallpunkt dienen
+ID 257 top level 5 path .snap/stand1
+ID 258 top level 5 path daten
+Konfiguration Stand 1

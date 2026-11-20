@@ -1,0 +1,50 @@
+
+## 1. Ausgangslage: gesunder Spiegel
+	devid    1 size 300.00MiB path /dev/loop0
+	devid    2 size 300.00MiB path /dev/loop1
+
+## 2. Platte B fällt aus (Simulation: Dateisystem aushängen, Loop-Gerät trennen)
+-- Normales Einbinden schlägt fehl, weil eine Platte fehlt:
+/tmp/p34/mnt: mount(2) system call failed: No such file or directory.
+-- Meldung des Kernels (dmesg, letzte passende Zeile):
+BTRFS error (device loopN): open_ctree failed: -2
+
+## 3. Degradiert einbinden (-o degraded): Daten bleiben lesbar
+$ mount -o degraded /dev/loop0 /tmp/p34/mnt
+f1.bin: OK
+f2.bin: OK
+f3.bin: OK
+	devid    1 size 300.00MiB path /dev/loop0
+	devid    2 size 0 path <missing disk> MISSING
+
+## 4. Neue Platte einsetzen: fehlendes Gerät (devid 2) ersetzen
+$ btrfs replace start -B 2 /dev/loop2 /tmp/p34/mnt
+Performing full device TRIM /dev/loop2 (300.00MiB) ...
+	devid    1 size 300.00MiB path /dev/loop0
+	devid    2 size 300.00MiB path /dev/loop2
+
+## 5. Prüfen: Scrub und Daten
+Error summary:    no errors found
+f1.bin: OK
+f2.bin: OK
+f3.bin: OK
+-- Profile nach der Reparatur (beim degradierten Betrieb sind neue Chunks im Profil single entstanden):
+WARNING: Multiple block group profiles detected, see 'man btrfs(5)'
+WARNING:    Data: single, raid1
+WARNING:    Metadata: single, raid1
+WARNING:    System: single, raid1
+Data, single: total=32.00MiB, used=0.00B
+Data, RAID1: total=64.00MiB, used=30.00MiB
+System, single: total=32.00MiB, used=16.00KiB
+System, RAID1: total=8.00MiB, used=0.00B
+Metadata, single: total=32.00MiB, used=0.00B
+Metadata, RAID1: total=32.00MiB, used=160.00KiB
+
+## 6. Profile wieder vereinheitlichen: Balance nur für Chunks, die noch nicht raid1 sind (soft)
+Done, had to relocate 3 out of 6 chunks
+Data, RAID1: total=96.00MiB, used=30.00MiB
+System, RAID1: total=8.00MiB, used=16.00KiB
+Metadata, RAID1: total=64.00MiB, used=160.00KiB
+    Data ratio:       2.00
+    Metadata ratio:       2.00
+    Multiple profiles:         no

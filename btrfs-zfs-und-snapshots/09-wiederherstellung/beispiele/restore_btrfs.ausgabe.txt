@@ -1,0 +1,28 @@
+
+## 1. Snapshot als Sicherungspunkt, danach: drei Dateien gelöscht, eine Datei verändert
+daten/berichte/q1.txt
+q1.txt: kaputt
+
+## 2. Gelöschte Datei zurückholen (kopieren aus dem Snapshot)
+$ cp -a .snap/vor-unfall/vertrag.txt daten/
+Vertrag
+
+## 3. Veränderte Datei zurückholen und große Datei ohne Platzverbrauch (Reflink) zurückholen
+Bericht Q1 (Version 1)
+$ cp -a --reflink=always .snap/vor-unfall/anlage.bin daten/
+anlage.bin: Prüfsumme gleich wie vorher: ja
+ Total Exclusive Set shared Filename
+ 5.00MiB 0.00B 5.00MiB daten
+ 5.00MiB 0.00B 5.00MiB .snap/vor-unfall
+
+## 4. Ganzes Verzeichnis zurückholen
+daten/anlage.bin
+daten/berichte/q1.txt
+daten/berichte/q2.txt
+daten/vertrag.txt
+
+## 5. Alte Stände ansehen: mehrere Snapshots, Datei vergleichen (diff)
+  1c1
+  < Bericht Q1 (Version 1)
+  ---
+  > Bericht Q1 (Version 2)

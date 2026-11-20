@@ -1,0 +1,44 @@
+Meldung: error writing 'daten/b2.bin': No space left on device
+   Ursache (vermutet): Platz oder Metadaten aufgebraucht
+   Nächster Schritt:   Snapshots prüfen (`btrfs subvolume list -s`), `btrfs filesystem usage` lesen (Unallocated), Snapshots löschen, ggf. Balance
+Meldung: dd: failed to open 'daten/voll.bin': Disk quota exceeded
+   Ursache (vermutet): Quote (qgroup) des Subvolumes erreicht
+   Nächster Schritt:   `btrfs qgroup show -re` lesen, Grenze prüfen oder Daten entfernen
+Meldung: touch: cannot touch '.snap/daten-s1/neu': Read-only file system
+   Ursache (vermutet): schreibgeschützter Snapshot oder Dateisystem wurde schreibgeschützt eingebunden
+   Nächster Schritt:   Ziel prüfen (Snapshot?), bei Dateisystemfehlern Protokoll lesen (`dmesg`)
+Meldung: dd: error reading '/mnt/g.bin': Input/output error
+   Ursache (vermutet): Lesefehler, bei Btrfs oft ein Prüfsummenfehler ohne Kopie zum Reparieren
+   Nächster Schritt:   `dmesg` auf `csum failed` prüfen, Scrub ausführen, Datei aus der Sicherung wiederherstellen
+Meldung: BTRFS warning (device loop0): csum failed root 5 ino 257 off 1048576 csum 0x1a2b3c4d expec
+   Ursache (vermutet): Prüfsumme stimmt nicht: Daten oder Datenträger beschädigt
+   Nächster Schritt:   `btrfs scrub start`, `btrfs device stats`, Zustand der Platte prüfen (SMART)
+Meldung: WARNING: errors detected during scrubbing, corrected
+   Ursache (vermutet): Scrub hat Fehler erkannt und aus der Kopie repariert
+   Nächster Schritt:   Fehlerzähler beobachten (`btrfs device stats`); häufen sich Fehler, Platte tauschen
+Meldung: ERROR: subvolume /mnt/q/.snap/s1 is not read-only
+   Ursache (vermutet): Snapshot ohne `-r` angelegt; `btrfs send` braucht schreibgeschützte Subvolumes
+   Nächster Schritt:   Snapshot mit `btrfs subvolume snapshot -r` neu anlegen
+Meldung: ERROR: snapshot: cannot find parent subvolume 12345678-aaaa-bbbb-cccc-1234567890ab
+   Ursache (vermutet): Elternsnapshot fehlt im Ziel; inkrementeller Datenstrom passt nicht
+   Nächster Schritt:   Gemeinsame Basis prüfen (`replikationsplan.py`), sonst vollständig neu senden
+Meldung: ERROR: creating subvolume s1 failed: File exists
+   Ursache (vermutet): Name im Ziel existiert bereits
+   Nächster Schritt:   Ziel-Snapshot umbenennen oder löschen, oder anderes Zielverzeichnis wählen
+Meldung: ERROR: can't list qgroups: quotas not enabled
+   Ursache (vermutet): Quoten sind für dieses Dateisystem nicht eingeschaltet
+   Nächster Schritt:   `btrfs quota enable` ausführen (wenn Quoten gewollt sind)
+Meldung: mount: /mnt: mount(2) system call failed: No such file or directory.
+   Ursache (vermutet): Dateisystem lässt sich nicht einbinden, z. B. fehlendes Gerät
+   Nächster Schritt:   `btrfs filesystem show`, fehlende Platte prüfen, Notfalls `-o degraded` (nur zur Datensicherung/Reparatur)
+Meldung: BTRFS error (device loop0): open_ctree failed: -2
+   Ursache (vermutet): Dateisystem lässt sich nicht einbinden, z. B. fehlendes Gerät
+   Nächster Schritt:   `btrfs filesystem show`, fehlende Platte prüfen, Notfalls `-o degraded` (nur zur Datensicherung/Reparatur)
+Meldung: WARNING: Multiple block group profiles detected, see 'man btrfs(5)'
+   Ursache (vermutet): unterschiedliche Profile (z. B. single und raid1) nebeneinander, oft nach degradiertem Betrieb
+   Nächster Schritt:   `btrfs balance start -dconvert=raid1,soft -mconvert=raid1,soft`
+Meldung: Meldung die niemand kennt: foo bar
+   UNBEKANNT: nicht in der Regelliste; Dokumentation und Protokolle lesen
+
+13 erkannt, 1 unbekannt
+Rückgabecode: 1

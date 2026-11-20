@@ -1,0 +1,15 @@
+# Meldungen aus den Läufen dieser Übungsreihe (Auszüge, Pfade und IDs gekürzt) und eine erfundene Zeile zum Üben
+error writing 'daten/b2.bin': No space left on device
+dd: failed to open 'daten/voll.bin': Disk quota exceeded
+touch: cannot touch '.snap/daten-s1/neu': Read-only file system
+dd: error reading '/mnt/g.bin': Input/output error
+BTRFS warning (device loop0): csum failed root 5 ino 257 off 1048576 csum 0x1a2b3c4d expected csum 0x5e6f7a8b mirror 1
+WARNING: errors detected during scrubbing, corrected
+ERROR: subvolume /mnt/q/.snap/s1 is not read-only
+ERROR: snapshot: cannot find parent subvolume 12345678-aaaa-bbbb-cccc-1234567890ab
+ERROR: creating subvolume s1 failed: File exists
+ERROR: can't list qgroups: quotas not enabled
+mount: /mnt: mount(2) system call failed: No such file or directory.
+BTRFS error (device loop0): open_ctree failed: -2
+WARNING: Multiple block group profiles detected, see 'man btrfs(5)'
+Meldung die niemand kennt: foo bar

@@ -1,0 +1,25 @@
+
+## 1. Quoten einschalten (zuvor meldet btrfs: quotas not enabled)
+ERROR: can't list qgroups: quotas not enabled
+$ btrfs quota enable .
+
+## 2. Grenze setzen: projekt_a höchstens 10 MiB, projekt_b höchstens 40 MiB
+
+## 3. In projekt_a 15 MiB schreiben: bei 10 MiB ist Schluss
+error writing 'projekt_a/daten.bin': Disk quota exceeded
+  10452992 Bytes  daten.bin
+
+## 4. Die Belegung je Subvolume (qgroup show)
+Qgroupid Referenced Exclusive Max referenced Max exclusive Path 
+-------- ---------- --------- -------------- ------------- ---- 
+0/5 16.00KiB 16.00KiB none none <toplevel>
+0/256 9.98MiB 9.98MiB 10.00MiB none projekt_a
+0/257 16.00KiB 16.00KiB 40.00MiB none projekt_b
+
+## 5. Quote aufheben (none) und erneut schreiben
+Schreiben ohne Grenze erfolgreich
+Qgroupid Referenced Exclusive Max referenced Max exclusive Path 
+-------- ---------- --------- -------------- ------------- ---- 
+0/5 16.00KiB 16.00KiB none none <toplevel>
+0/256 24.98MiB 24.98MiB none none projekt_a
+0/257 16.00KiB 16.00KiB 40.00MiB none projekt_b

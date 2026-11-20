@@ -1,0 +1,21 @@
+# NICHT AUSGEFÜHRT: ZFS-Befehle zur Wiederherstellung als Beispiel (Fachwissen, nicht bestätigt; ZFS war im Test-Container nicht verfügbar).
+# Dataset- und Pool-Namen sowie Plattennamen sind erfunden. Vor dem Einsatz mit `man zfs` und `man zpool` prüfen und an einer Kopie üben.
+
+# Snapshots anzeigen
+zfs list -t snapshot -r tank/daten
+
+# Einzelne Dateien: Snapshots sind unter dem versteckten Verzeichnis .zfs/snapshot erreichbar (je nach Einstellung `snapdir`)
+cp /tank/daten/.zfs/snapshot/vor-unfall/vertrag.txt /tank/daten/
+
+# Ganzes Dataset auf den letzten Snapshot zurücksetzen (neuere Änderungen gehen verloren)
+zfs rollback tank/daten@vor-unfall
+# Auf einen älteren Snapshot zurück: dazwischenliegende Snapshots werden mit -r vernichtet
+zfs rollback -r tank/daten@aelter
+
+# Statt Rollback: Klon aus dem Snapshot anlegen und prüfen, ohne das Original zu ändern
+zfs clone tank/daten@vor-unfall tank/daten-pruefung
+
+# Ausgefallene Platte ersetzen und Wiederaufbau beobachten
+zpool status tank
+zpool replace tank /dev/sdc /dev/sdf
+zpool status tank

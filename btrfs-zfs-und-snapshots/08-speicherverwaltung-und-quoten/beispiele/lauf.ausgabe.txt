@@ -1,0 +1,10 @@
+Fall 1: nur quota 100 GB: Snapshots zählen mit
+  tank/projekt (80 GB)         Daten  80 + Snapshots   0 + Kinder   0 =  80 GB -> Schreiben möglich
+  tank/projekt (80, Snap 30)   Daten  80 + Snapshots  30 + Kinder   0 = 110 GB -> Schreiben abgelehnt: quota 100 GB überschritten (Daten + Snapshots + Kinder = 110 GB)
+Fall 2: refquota 100 GB: Snapshots zählen nicht
+  tank/projekt (80, Snap 30)   Daten  80 + Snapshots  30 + Kinder   0 = 110 GB -> Schreiben möglich
+  tank/projekt (105, Snap 0)   Daten 105 + Snapshots   0 + Kinder   0 = 105 GB -> Schreiben abgelehnt: refquota 100 GB überschritten (eigene Daten 105 GB)
+Fall 3: Kinder-Datasets zählen bei quota mit
+  tank/abteilung               Daten  10 + Snapshots   5 + Kinder  90 = 105 GB -> Schreiben abgelehnt: quota 100 GB überschritten (Daten + Snapshots + Kinder = 105 GB)
+Reservation: garantierter Platz je Dataset; Summe der Reservierungen darf den Pool nicht übersteigen
+  Pool 500 GB, Reservierungen {'tank/db': 200, 'tank/vm': 200, 'tank/daten': 150} = 550 GB -> nicht möglich

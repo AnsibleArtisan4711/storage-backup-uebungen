@@ -1,0 +1,37 @@
+
+## 1. Dateisystem über zwei Platten: Daten und Metadaten gespiegelt (raid1)
+$ mkfs.btrfs -q -f -L lernpool -d raid1 -m raid1 /dev/loop0 /dev/loop1
+$ btrfs filesystem show /tmp/p34/mnt
+Label: 'lernpool'  uuid: <UUID>
+	Total devices 2 FS bytes used 144.00KiB
+	devid    1 size 300.00MiB used 104.00MiB path /dev/loop0
+	devid    2 size 300.00MiB used 104.00MiB path /dev/loop1
+
+
+## 2. Subvolumes anlegen (sehen aus wie Verzeichnisse, haben aber eigene Eigenschaften)
+$ btrfs subvolume create /tmp/p34/mnt/daten
+Create subvolume '/tmp/p34/mnt/daten'
+$ btrfs subvolume create /tmp/p34/mnt/home
+Create subvolume '/tmp/p34/mnt/home'
+$ btrfs subvolume list /tmp/p34/mnt
+ID 256 gen 7 top level 5 path daten
+ID 257 gen 7 top level 5 path home
+
+## 3. Dateien in die Subvolumes schreiben
+  drwxr-xr-x daten
+  drwxr-xr-x home
+  drwxr-xr-x verz
+
+## 4. Ein Subvolume getrennt einbinden (wie eine eigene Partition) mit -o subvol
+notiz.txt
+
+## 5. Belegung und Profile (Auszug aus btrfs filesystem usage und df)
+    Device size:  600.00MiB
+    Device allocated:  208.00MiB
+    Device unallocated:  392.00MiB
+    Data ratio:       2.00
+    Metadata ratio:       2.00
+Data, RAID1: total=64.00MiB, used=0.00B
+System, RAID1: total=8.00MiB, used=16.00KiB
+Metadata, RAID1: total=32.00MiB, used=128.00KiB
+GlobalReserve, single: total=5.50MiB, used=0.00B

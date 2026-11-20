@@ -1,0 +1,5 @@
+eine Kopie (single)     : Lesen -> FEHLER: alle Kopien beschädigt (erkannt, nicht reparierbar); Daten stimmen: False
+zwei Kopien (Spiegel)   : Lesen -> repariert aus Kopie 2; Daten stimmen: True
+
+Ohne Prüfsumme (klassisches Dateisystem) würde der Block mit dem gekippten Bit unbemerkt als gültig gelesen:
+  Bytes verschieden: 1 von 4096; Prüfsumme alt 60ff42cc, neu 189453a3

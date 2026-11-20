@@ -1,0 +1,6 @@
+Daten                                Größe   zlib -1   zlib -6   Zeit -6
+Text (Wörter)                      1045123     33.3%     31.5%      18 ms
+Zufall (z. B. verschlüsselt)       1045123    100.0%    100.0%      19 ms
+nur Nullen                         1045123      0.1%      0.1%       1 ms
+bereits komprimiert                 989079    100.0%    100.0%      18 ms
+(Anteil der komprimierten Größe an der Originalgröße; die Zeiten sind Messwerte dieses Laufs und variieren.)

@@ -1,0 +1,13 @@
+
+## Belegung auf der Platte je Mount-Option (Text 30 MiB gut komprimierbar, Zufall 10 MiB nicht)
+keine          text.dat: Platte 30.0 MiB von 30.0 MiB (100%)   zufall.dat: Platte 10.0 MiB von 10.0 MiB (100%)   
+compress=zstd:3 text.dat: Platte 10.3 MiB von 30.0 MiB (34%)   zufall.dat: Platte 10.0 MiB von 10.0 MiB (100%)   
+compress=zlib  text.dat: Platte 11.2 MiB von 30.0 MiB (37%)   zufall.dat: Platte 10.0 MiB von 10.0 MiB (100%)   
+compress=lzo   text.dat: Platte 29.8 MiB von 30.0 MiB (99%)   zufall.dat: Platte 10.0 MiB von 10.0 MiB (100%)   
+
+## compress-force: auch Daten komprimieren, die als unkomprimierbar erkannt würden
+compress-force=zstd:3 text.dat: Platte 10.3 MiB von 30.0 MiB (34%)   zufall.dat: Platte 10.0 MiB von 10.0 MiB (100%)   
+
+## Kompression nachträglich auf vorhandene Dateien anwenden (btrfs filesystem defragment -czstd)
+vorher:  Platte 30.0 MiB von 30.0 MiB
+nachher: Platte 10.3 MiB von 30.0 MiB

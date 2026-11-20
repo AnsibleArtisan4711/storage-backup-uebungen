@@ -1,0 +1,18 @@
+
+## 1. 120 MiB schreiben
+  df:  127M 99M (belegt, verfügbar); Data logisch belegt: 120 MiB
+
+## 2. Snapshot anlegen, Datei löschen: der Platz wird nicht frei
+  df:  127M 99M (belegt, verfügbar); Data logisch belegt: 120 MiB
+  Datei in daten: 0 Dateien; im Snapshot: 1 Datei
+
+## 3. Weitere Daten schreiben bis der Platz ausgeht
+error writing 'daten/b2.bin': No space left on device
+error writing 'daten/b3.bin': No space left on device
+  df:  226M 0 (belegt, verfügbar); Data logisch belegt: 219 MiB
+
+## 4. Ursache finden und beseitigen: Snapshots auflisten, den Snapshot löschen, dann erneut schreiben
+  Snapshot ID 257, Pfad .snap/s1
+  df:  106M 120M (belegt, verfügbar); Data logisch belegt: 99 MiB
+  Schreiben gelingt jetzt
+  df:  176M 50M (belegt, verfügbar); Data logisch belegt: 169 MiB

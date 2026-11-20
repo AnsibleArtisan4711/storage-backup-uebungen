@@ -1,0 +1,19 @@
+--- Normalfall: Quelle ['s1', 's2', 's3', 's4'], Ziel ['s1', 's2']
+    btrfs send -p /mnt/q/.snap/s2 /mnt/q/.snap/s3 | btrfs receive /mnt/z/sicherung
+    zfs send -i @s2 tank/daten@s3 | zfs receive backup/daten
+    btrfs send -p /mnt/q/.snap/s3 /mnt/q/.snap/s4 | btrfs receive /mnt/z/sicherung
+    zfs send -i @s3 tank/daten@s4 | zfs receive backup/daten
+--- Ziel leer (Erstübertragung): Quelle ['s1', 's2'], Ziel []
+    Keine gemeinsame Basis: vollständige Übertragung des ersten neuen Snapshots, danach inkrementell
+    btrfs send /mnt/q/.snap/s1 | btrfs receive /mnt/z/sicherung
+    zfs send tank/daten@s1 | zfs receive backup/daten
+    btrfs send -p /mnt/q/.snap/s1 /mnt/q/.snap/s2 | btrfs receive /mnt/z/sicherung
+    zfs send -i @s1 tank/daten@s2 | zfs receive backup/daten
+--- Ziel aktuell: Quelle ['s1', 's2'], Ziel ['s1', 's2']
+    Nichts zu übertragen: Ziel hat bereits alle Snapshots.
+--- Basis auf der Quelle gelöscht: Quelle ['s3', 's4'], Ziel ['s1', 's2']
+    Keine gemeinsame Basis: vollständige Übertragung des ersten neuen Snapshots, danach inkrementell
+    btrfs send /mnt/q/.snap/s3 | btrfs receive /mnt/z/sicherung
+    zfs send tank/daten@s3 | zfs receive backup/daten
+    btrfs send -p /mnt/q/.snap/s3 /mnt/q/.snap/s4 | btrfs receive /mnt/z/sicherung
+    zfs send -i @s3 tank/daten@s4 | zfs receive backup/daten

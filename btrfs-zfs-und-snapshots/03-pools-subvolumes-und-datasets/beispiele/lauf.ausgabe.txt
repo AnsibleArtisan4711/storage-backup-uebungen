@@ -1,0 +1,10 @@
+Pool tank: 2 vdevs, nutzbar 200 GB, Ausfalltoleranz je vdev 1 Platte(n)
+Pool archiv: 1 vdev, nutzbar 200 GB, Ausfalltoleranz 2 Platte(n)
+
+Vererbung von Eigenschaften:
+  tank           compression  = lz4   (lokal)
+  tank           recordsize   = -     (Standard)
+  tank/daten     compression  = lz4   (geerbt von tank)
+  tank/daten     recordsize   = -     (Standard)
+  tank/daten/vm  compression  = off   (lokal)
+  tank/daten/vm  recordsize   = 16K   (lokal)

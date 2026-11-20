@@ -1,0 +1,36 @@
+
+## 1. Versionen der Werkzeuge
+$ btrfs --version
+btrfs-progs v6.6.3
+$ mkfs.btrfs --version
+mkfs.btrfs, part of btrfs-progs v6.6.3
+
+## 2. Kernel-Unterstützung: Dateisysteme, die dieser Kernel kennt
+  btrfs
+btrfs im Kernel: ja; zfs im Kernel: nein
+
+## 3. ZFS: Programme und Kernelmodul?
+  zpool  nicht installiert
+  zfs    nicht installiert
+modprobe: nicht installiert
+Kernelmodul zfs vorhanden: nein
+Ergebnis: ZFS kann in diesem Container nicht ausgeführt werden; die ZFS-Teile des Kurses sind Modelle und Text (nicht ausgeführt).
+
+## 4. Ein Btrfs-Dateisystem anlegen und die Grunddaten lesen
+$ mkfs.btrfs -q -f -L lernpool /dev/loop0
+$ btrfs filesystem show /dev/loop0
+Label: 'lernpool'  uuid: 4e6d3ad6-1fb6-4654-a932-1cb8401cd56c
+	Total devices 1 FS bytes used 144.00KiB
+	devid    1 size 200.00MiB used 88.00MiB path /dev/loop0
+
+-- Super-Block (Auszug):
+csum_type		0 (crc32c)
+csum_size		4
+label			lernpool
+sectorsize		4096
+nodesize		16384
+$ btrfs filesystem df /tmp/p34/mnt
+Data, single: total=8.00MiB, used=0.00B
+System, DUP: total=8.00MiB, used=16.00KiB
+Metadata, DUP: total=32.00MiB, used=128.00KiB
+GlobalReserve, single: total=5.50MiB, used=0.00B

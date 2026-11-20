@@ -1,0 +1,35 @@
+
+## 1. Spiegel (raid1): Dateien anlegen, Prüfsummen merken
+6ecce599...  f1.bin
+55e706fd...  f2.bin
+aa1e93a4...  f3.bin
+
+## 2. Platte B beschädigen: 100 MiB Zufallsdaten mitten in das Image schreiben (Simulation eines Datenträgerfehlers)
+
+## 3. Scrub: erkennt Prüfsummenfehler und repariert sie aus der Kopie auf Platte A
+WARNING: errors detected during scrubbing, corrected
+Status:           finished
+Error summary:    csum=7680
+  Corrected:      7680
+  Uncorrectable:  0
+  Unverified:     0
+-- Fehlerzähler je Gerät:
+      1 [Gerät].corruption_errs  0
+      1 [Gerät].corruption_errs  7680
+      2 [Gerät].read_io_errs     0
+-- Daten nach der Reparatur lesbar und unverändert:
+f1.bin: OK
+f2.bin: OK
+f3.bin: OK
+-- Zweiter Scrub: jetzt fehlerfrei
+Error summary:    no errors found
+
+## 4. Ohne Spiegel (single): Beschädigung wird erkannt, aber nicht repariert
+Die Dateidaten beginnen im Image bei Byte 22020096 (gefunden durch Suche nach dem Muster).
+Error summary:    csum=256
+  Corrected:      0
+  Uncorrectable:  256
+-- Lesen der beschädigten Datei: Fehlermeldung statt falscher Daten
+dd: error reading '/tmp/p34/mnt/g.bin': Input/output error
+-- Kernelmeldungen zu Prüfsummenfehlern (dmesg, Auszug):
+BTRFS warning (device loopN): csum failed root 5 ino N off N csum ... expected csum ... mirror 1

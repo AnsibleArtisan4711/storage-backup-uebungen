@@ -1,0 +1,45 @@
+Verwaltungsmodell
+   Btrfs: Dateisystem mit Subvolumes (`btrfs subvolume`)
+   ZFS:   Pool (`zpool`) mit Datasets (`zfs`)
+   Status: Btrfs L, ZFS F
+Copy-on-Write
+   Btrfs: ja (Reflinks, Snapshots)
+   ZFS:   ja
+   Status: Btrfs L, ZFS F
+Prüfsummen für Daten und Metadaten
+   Btrfs: ja, Standard crc32c (laut `dump-super`), weitere Verfahren wählbar
+   ZFS:   ja, Standard fletcher4, weitere Verfahren wählbar
+   Status: Btrfs L (Standard), ZFS F
+Selbstheilung bei Redundanz
+   Btrfs: ja, Scrub repariert aus der Kopie (raid1)
+   ZFS:   ja, Scrub/Lesen repariert aus Spiegel oder Parität
+   Status: Btrfs L, ZFS F
+Snapshots
+   Btrfs: Subvolume-Snapshots, schreibgeschützt oder beschreibbar
+   ZFS:   Snapshots (schreibgeschützt), Klone (beschreibbar)
+   Status: Btrfs L, ZFS F
+Replikation
+   Btrfs: `btrfs send` / `btrfs receive`, inkrementell mit Elternsnapshot
+   ZFS:   `zfs send` / `zfs receive`, inkrementell
+   Status: Btrfs L, ZFS F
+Kompression
+   Btrfs: zstd, zlib, lzo (Mount-Option oder Eigenschaft)
+   ZFS:   lz4, zstd, gzip (Eigenschaft je Dataset)
+   Status: Btrfs L, ZFS F
+Redundanz-Profile
+   Btrfs: single, dup, raid0, raid1, raid10 (raid5/6 mit Einschränkungen laut Fachwissen)
+   ZFS:   Stripe, Spiegel, raidz1/2/3
+   Status: Btrfs L (raid1), Rest F
+Quoten
+   Btrfs: qgroups (`btrfs quota`)
+   ZFS:   quota, refquota, reservation je Dataset
+   Status: Btrfs L, ZFS F
+Einbindung in Linux
+   Btrfs: Teil des Kernels (GPL)
+   ZFS:   OpenZFS, separates Kernelmodul, Lizenz CDDL
+   Status: F
+Arbeitsspeicher
+   Btrfs: nutzt den normalen Seitencache
+   ZFS:   eigener Cache (ARC), Speicherbedarf beachten
+   Status: F
+11 Zeile(n)

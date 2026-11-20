@@ -1,0 +1,8 @@
+Zwei zusammengehörende Änderungen: Block 0 -> A2 und Block 2 -> C2 (gedacht als eine Einheit)
+  Überschreiben  ohne Absturz                   vorher=['A1', 'B1', 'C1'] nachher=['A2', 'B1', 'C2'] -> konsistent
+  Überschreiben  Absturz nach dem ersten Block  vorher=['A1', 'B1', 'C1'] nachher=['A2', 'B1', 'C1'] -> INKONSISTENT (halb geändert)
+  Copy-on-Write  ohne Absturz                   vorher=['A1', 'B1', 'C1'] nachher=['A2', 'B1', 'C2'] -> konsistent
+  Copy-on-Write  Absturz nach dem ersten Block  vorher=['A1', 'B1', 'C1'] nachher=['A1', 'B1', 'C1'] -> konsistent
+
+Snapshot: alte Wurzel [10, 11, 12], neue Wurzel [20, 11, 12]; gemeinsame physische Blöcke: [11, 12] (2 von 3)
+Alter Stand über den Snapshot: ['A1', 'B1', 'C1']   aktueller Stand: ['A2', 'B1', 'C1']

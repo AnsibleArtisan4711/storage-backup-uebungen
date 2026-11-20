@@ -1,0 +1,21 @@
+# NICHT AUSGEFÜHRT: ZFS-Befehle als Beispiel (Fachwissen, nicht bestätigt; ZFS war im Test-Container nicht verfügbar).
+# Plattennamen und Pool-Namen sind erfunden. Auf einem Testsystem mit OpenZFS vor dem Einsatz mit `man zpool` und `man zfs` prüfen.
+
+# Pool aus zwei gespiegelten Paaren anlegen (Daten werden über beide Paare verteilt)
+zpool create tank mirror /dev/sdb /dev/sdc mirror /dev/sdd /dev/sde
+
+# Zustand und Belegung anzeigen
+zpool status tank
+zpool list tank
+
+# Datasets anlegen (wie Verzeichnisse mit eigenen Eigenschaften)
+zfs create tank/daten
+zfs create tank/daten/vm
+
+# Eigenschaften setzen; Kindelemente erben, solange sie nicht selbst gesetzt sind
+zfs set compression=lz4 tank
+zfs set recordsize=16K tank/daten/vm
+zfs get -r compression tank
+
+# Übersicht
+zfs list -r tank

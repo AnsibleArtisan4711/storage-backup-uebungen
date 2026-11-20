@@ -1,0 +1,41 @@
+
+## 1. df zeigt die Größe des Spiegels, nicht die Summe beider Platten
+ Size Used Avail
+ 400M 56M 301M
+(zwei Platten à 400 MiB, gespiegelt: nutzbar etwa 400 MiB; 50 MiB Daten belegen 100 MiB auf den Platten)
+
+## 2. btrfs filesystem df: Belegung nach Datenart und Profil
+Data, RAID1: total=144.00MiB, used=50.00MiB
+System, RAID1: total=8.00MiB, used=16.00KiB
+Metadata, RAID1: total=40.00MiB, used=208.00KiB
+GlobalReserve, single: total=5.50MiB, used=0.00B
+
+## 3. btrfs filesystem usage: Belegung je Gerät und Spiegelfaktor
+Overall:
+    Device size:  800.00MiB
+    Device allocated:  384.00MiB
+    Device unallocated:  416.00MiB
+    Device missing:      0.00B
+    Device slack:      0.00B
+    Used:  100.44MiB
+    Free (estimated):  302.00MiB (min: 302.00MiB)
+    Free (statfs, df):  301.00MiB
+    Data ratio:       2.00
+    Metadata ratio:       2.00
+    Global reserve:    5.50MiB (used: 0.00B)
+    Multiple profiles:         no
+
+              Data      Metadata  System                              
+Id Path       RAID1     RAID1     RAID1    Unallocated Total     Slack
+-- ---------- --------- --------- -------- ----------- --------- -----
+ 1 /dev/loop0 144.00MiB  40.00MiB  8.00MiB   208.00MiB 400.00MiB     -
+ 2 /dev/loop1 144.00MiB  40.00MiB  8.00MiB   208.00MiB 400.00MiB     -
+-- ---------- --------- --------- -------- ----------- --------- -----
+   Total      144.00MiB  40.00MiB  8.00MiB   416.00MiB 800.00MiB 0.00B
+   Used        50.00MiB 208.00KiB 16.00KiB                            
+
+## 4. Snapshot anlegen und Daten löschen: der Platz wird nicht frei, solange der Snapshot sie hält
+daten (aktuell):  0
+Snapshot s1:      50M
+Data belegt:       52428800 Bytes logisch belegt (unverändert 50 MiB = 52428800; auf den Platten wegen des Spiegels doppelt)
+nach dem Löschen des Snapshots: 0 Bytes

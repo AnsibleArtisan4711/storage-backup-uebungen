@@ -1,0 +1,31 @@
+
+## 1. Ausgangslage: eine Platte, Profil single (Daten), DUP (Metadaten)
+	Total devices 1 FS bytes used 100.27MiB
+	devid    1 size 300.00MiB used 216.00MiB path /dev/loop0
+Data, single: total=136.00MiB, used=100.00MiB
+System, DUP: total=8.00MiB, used=16.00KiB
+Metadata, DUP: total=32.00MiB, used=256.00KiB
+
+## 2. Zweite Platte hinzufügen und auf raid1 umstellen (Balance mit Konvertierung)
+$ btrfs device add -f /dev/loop1 /tmp/p34/mnt
+Performing full device TRIM /dev/loop1 (300.00MiB) ...
+$ btrfs balance start -dconvert=raid1 -mconvert=raid1 /tmp/p34/mnt
+Done, had to relocate 7 out of 7 chunks
+Data, RAID1: total=192.00MiB, used=100.00MiB
+System, RAID1: total=12.00MiB, used=16.00KiB
+Metadata, RAID1: total=39.00MiB, used=256.00KiB
+
+## 3. Dritte Platte hinzufügen und Daten gleichmäßig verteilen
+Done, had to relocate 2 out of 7 chunks
+	devid    1 size 300.00MiB used 115.00MiB 
+	devid    2 size 300.00MiB used 211.00MiB 
+	devid    3 size 300.00MiB used 96.00MiB 
+
+## 4. Platte wieder entfernen (Daten werden zuvor auf die anderen verschoben)
+$ btrfs device remove /dev/loop2 /tmp/p34/mnt
+	Total devices 2 FS bytes used 100.27MiB
+	devid    1 size 300.00MiB used 179.00MiB 
+	devid    2 size 300.00MiB used 179.00MiB 
+
+## 5. Die Prüfsummen bleiben gültig: Scrub nach den Änderungen
+Error summary:    no errors found

@@ -1,0 +1,30 @@
+Snapshots vorhanden: 200, behalten: 15, löschen: 185
+behalten (neueste zuerst):
+  2026-11-20  (täglich)
+  2026-11-19  (täglich)
+  2026-11-18  (täglich)
+  2026-11-17  (täglich)
+  2026-11-16  (täglich)
+  2026-11-15  (täglich, Sonntag)
+  2026-11-14  (täglich)
+  2026-11-08  (Sonntag)
+  2026-11-01  (Sonntag, Monatserster)
+  2026-10-25  (Sonntag)
+  2026-10-01  (Monatserster)
+  2026-09-01  (Monatserster)
+  2026-08-01  (Monatserster)
+  2026-07-01  (Monatserster)
+  2026-06-01  (Monatserster)
+
+Lücke-Test: fehlt der letzte Snapshot (Sicherung ausgefallen)?
+  neuester behaltener Snapshot: 2026-11-19 (Alter 1 Tag)
+
+## ZFS-Modell
+Nach 100 MB und Snapshot s1: Dataset 100 MB, s1 used 0 MB, insgesamt belegt 100 MB
+Nach Löschen von 40 MB und Schreiben von 10 MB: Dataset 70 MB, s1 used 40 MB, insgesamt belegt 110 MB
+Nach s2 und Löschen von 30 MB: Dataset 40 MB; s1 used 40, s2 used 0; belegt 110 MB
+Nach Löschen von s1: s2 used 30 MB, insgesamt belegt 70 MB
+
+Klon: ein Klon entsteht aus einem Snapshot und teilt alle Blöcke, bis er sie ändert:
+  Klon aus s2: 70 MB sichtbar, davon gemeinsam mit s2: 70 MB, eigener Platz: 0 MB
+  Nach 5 MB Schreiben im Klon: eigener Platz 5 MB

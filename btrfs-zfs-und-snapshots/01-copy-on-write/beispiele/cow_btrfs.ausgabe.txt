@@ -1,0 +1,28 @@
+
+## 1. 8-MB-Datei anlegen und eine Reflink-Kopie erzeugen (kein Kopieren der Daten)
+$ cp --reflink=always original.bin kopie.bin
+$ btrfs filesystem du original.bin kopie.bin
+     Total   Exclusive  Set shared  Filename
+   8.00MiB       0.00B     8.00MiB  original.bin
+   8.00MiB       0.00B     8.00MiB  kopie.bin
+(Total = was die Datei umfasst; Exclusive = nur diese Datei belegt; Set shared = von beiden gemeinsam genutzt.)
+
+## 2. Belegter Platz: eine Kopie kostet fast nichts
+Data,single: belegt: 8388608 Bytes
+
+## 3. Dieselben Blöcke auf dem Datenträger (filefrag: physische Adresse)
+original.bin: erster Extent beginnt bei physischem Block 3328
+kopie.bin: erster Extent beginnt bei physischem Block 3328
+
+## 4. Kopie ändern: nur die geänderten Blöcke werden neu geschrieben (Copy-on-Write)
+$ btrfs filesystem du original.bin kopie.bin
+     Total   Exclusive  Set shared  Filename
+   8.00MiB       0.00B     8.00MiB  original.bin
+   8.00MiB     1.00MiB     7.00MiB  kopie.bin
+original.bin: 3328 
+kopie.bin: 15616 3584 
+(Die ersten Blöcke der Kopie liegen jetzt an anderer Stelle; der Rest ist weiter gemeinsam.)
+
+## 5. Inhalt vergleichen
+erstes MB verschieden (geändert)
+Rest der Dateien gleich

@@ -1,0 +1,21 @@
+
+## 1. Fehler: Snapshot ohne -r (beschreibbar) lässt sich nicht senden
+ERROR: subvolume /tmp/p34/q/.snap/s1 is not read-only
+Lösung: schreibgeschützten Snapshot anlegen (btrfs subvolume snapshot -r).
+
+## 2. Normalfall: s1 voll, s2 inkrementell senden
+s1 empfangen: s1
+
+## 3. Fehler: Elternsnapshot fehlt im Ziel (s1 dort gelöscht) beim Empfang von s2
+ERROR: snapshot: cannot find parent subvolume 96b74d1b-dfb5-f841-94c8-d0a81116433c
+At snapshot s2
+Lösung: Elternsnapshot im Ziel wiederherstellen (erneut vollständig senden) oder eine andere gemeinsame Basis wählen.
+
+## 4. Fehler: der Name existiert im Ziel bereits
+Erster Empfang gelingt (s1 ist wieder im Ziel). Zweiter Versuch mit demselben Namen:
+At subvol s1
+ERROR: creating subvolume s1 failed: File exists
+Lösung: Ziel-Snapshot zuerst umbenennen oder löschen, oder in einen anderen Ordner empfangen.
+
+## 5. Elternsnapshot auf der Quelle gelöscht: inkrementelles Senden nicht mehr möglich
+ERROR: realpath /tmp/p34/q/.snap/s1 failed: No such file or directory

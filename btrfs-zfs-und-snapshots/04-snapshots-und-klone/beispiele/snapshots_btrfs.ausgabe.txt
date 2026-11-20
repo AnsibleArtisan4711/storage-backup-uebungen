@@ -1,0 +1,33 @@
+
+## 1. Schreibgeschützten Snapshot anlegen (-r) und Platzbedarf prüfen
+$ btrfs subvolume snapshot -r daten .snap/daten-s1
+Create a readonly snapshot of 'daten' in '.snap/daten-s1'
+     Total   Exclusive  Set shared  Filename
+  20.00MiB       0.00B    20.00MiB  daten
+  20.00MiB       0.00B    20.00MiB  .snap/daten-s1
+belegt insgesamt (Data): 20971520 Bytes (20 MiB = 20971520)
+
+## 2. Daten ändern: der Snapshot behält den alten Stand
+aktuell:  Version 2
+Snapshot: Version 1
+     Total   Exclusive  Set shared  Filename
+  20.00MiB     2.00MiB    18.00MiB  daten
+  20.00MiB       0.00B    20.00MiB  .snap/daten-s1
+
+## 3. Der Snapshot ist schreibgeschützt
+Schreiben: Read-only file system
+Anlegen:   Read-only file system
+
+## 4. Beschreibbaren Snapshot (Klon) anlegen und darin arbeiten
+$ btrfs subvolume snapshot daten klon
+Create a snapshot of 'daten' in './klon'
+daten: Version 2  klon: Klon-Version
+
+## 5. Snapshots auflisten und löschen
+ID 256 top level 5 path daten
+ID 257 top level 5 path .snap/daten-s1
+ID 258 top level 5 path klon
+$ btrfs subvolume delete .snap/daten-s1
+Delete subvolume 257 (no-commit): '/tmp/p34/mnt/.snap/daten-s1'
+ID 256 top level 5 path daten
+ID 258 top level 5 path klon
