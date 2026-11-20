@@ -1,0 +1,5 @@
+belegt  5 MB, seit 0 Tagen über weich: erlaubt
+belegt 12 MB, seit 0 Tagen über weich: erlaubt mit Warnung (noch 7 Tage Karenz)
+belegt 12 MB, seit 3 Tagen über weich: erlaubt mit Warnung (noch 4 Tage Karenz)
+belegt 12 MB, seit 9 Tagen über weich: abgelehnt (Karenzzeit von 7 Tagen abgelaufen)
+belegt 16 MB, seit 0 Tagen über weich: abgelehnt (harte Grenze 15 MB)

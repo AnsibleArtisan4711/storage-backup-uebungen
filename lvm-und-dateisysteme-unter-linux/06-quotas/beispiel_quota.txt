@@ -1,0 +1,14 @@
+# Quota-Befehle (NICHT AUSGEFÜHRT: im Test-Container ließ sich ein Dateisystem mit Quota-Option nicht einbinden; aus Fachwissen, nicht bestätigt)
+# ext4, Benutzer-Quota
+mkfs.ext4 -O quota -E quotatype=usrquota /dev/sdb1
+mount -o usrquota /dev/sdb1 /daten
+quotaon -v /daten
+setquota -u anna 10240 15360 0 0 /daten      # weich 10 MB, hart 15 MB (KB), Inodes unbegrenzt
+repquota -u /daten                           # Bericht
+quota -u anna                                # Sicht des Benutzers
+
+# XFS, Projekt-Quota für ein Verzeichnis
+mount -o prjquota /dev/sdc1 /srv
+xfs_quota -x -c 'project -s -p /srv/projekt1 42' /srv
+xfs_quota -x -c 'limit -p bsoft=8m bhard=10m 42' /srv
+xfs_quota -x -c 'report -p -b -h' /srv

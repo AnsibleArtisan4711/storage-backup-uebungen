@@ -1,0 +1,8 @@
+# Software-RAID und LVM-Snapshots (NICHT AUSGEFÜHRT: im Test-Container fehlen md und Device-Mapper; aus Fachwissen, nicht bestätigt)
+mdadm --create /dev/md0 --level=1 --raid-devices=2 /dev/sdb /dev/sdc
+cat /proc/mdstat
+mdadm --detail /dev/md0
+mdadm /dev/md0 --fail /dev/sdb --remove /dev/sdb
+mdadm /dev/md0 --add /dev/sdd
+lvcreate -s -L 1G -n snap_daten /dev/vgdaten/daten     # Snapshot mit 1 GB Platz für Änderungen
+lvconvert --merge /dev/vgdaten/snap_daten              # Zustand zurückholen (Rollback)

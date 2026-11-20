@@ -1,0 +1,7 @@
+Volume Group: 150 Extents zu 4 MiB = 600 MiB
+daten  200 MiB  pv1: PE 0-49
+log    152 MiB  pv1: PE 50-74; pv2: PE 0-12
+frei: 248 MiB
+daten nach lvextend +100 MiB: 300 MiB  pv1: PE 0-49; pv2: PE 13-37
+Fehler: zu wenig freie Extents: 125 gebraucht, 37 frei
+rund: 5 MiB angefordert, belegt 8 MiB (aufgerundet auf Extents)

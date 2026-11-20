@@ -1,0 +1,29 @@
+
+## 1. Physical Volumes anlegen
+$ pvcreate -q /dev/loop0 /dev/loop1
+  Physical volume "/dev/loop0" successfully created.
+  Physical volume "/dev/loop1" successfully created.
+
+## 2. Volume Group anlegen (Extent-Größe 4 MiB ist der Standard)
+$ vgcreate -q vgdaten /dev/loop0 /dev/loop1
+  Volume group "vgdaten" successfully created
+
+## 3. Belegung: pvs und vgs (Gerätenamen ausgeblendet)
+  /dev/loopX vgdaten 296.00m 296.00m  74
+  /dev/loopX vgdaten 296.00m 296.00m  74
+  vgdaten   2   0 592.00m 592.00m 4.00m  148
+
+## 4. Eine dritte Platte in die Gruppe aufnehmen (vgextend)
+$ pvcreate -q /dev/loop2
+  Physical volume "/dev/loop2" successfully created.
+$ vgextend -q vgdaten /dev/loop2
+  Volume group "vgdaten" successfully extended
+  vgdaten   3 688.00m 688.00m
+
+## 5. Einen Logical Volume anlegen: im Container nicht möglich (kein Device-Mapper)
+  /dev/mapper/control: open failed: No such device
+  Failure to communicate with kernel device-mapper driver.
+  Check that device-mapper is available in the kernel.
+
+## 6. Aufräumen
+VG und PVs entfernt

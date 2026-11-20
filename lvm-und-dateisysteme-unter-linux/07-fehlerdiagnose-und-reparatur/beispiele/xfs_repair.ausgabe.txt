@@ -1,0 +1,24 @@
+
+## 1. Prüfen ohne zu ändern (xfs_repair -n)
+Phase 1 - find and verify superblock...
+Phase 2 - using internal log
+Phase 3 - for each AG...
+Phase 4 - check for duplicate blocks...
+No modify flag set, skipping phase 5
+Phase 6 - check inode connectivity...
+Phase 7 - verify link counts...
+No modify flag set, skipping filesystem flush and exiting.
+
+## 2. Primären Superblock überschreiben und erneut prüfen
+bad primary superblock - bad magic number !!!
+.found candidate secondary superblock...
+
+## 3. Reparieren: xfs_repair findet den Zweitsuperblock
+Phase 1 - find and verify superblock...
+bad primary superblock - bad magic number !!!
+done
+
+## 4. Danach lässt sich das Dateisystem einbinden
+d1.txt
+d2.txt
+d3.txt

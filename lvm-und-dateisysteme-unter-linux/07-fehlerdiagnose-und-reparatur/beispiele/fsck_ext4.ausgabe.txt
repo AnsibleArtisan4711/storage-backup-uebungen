@@ -1,0 +1,39 @@
+
+## 1. Zustand prüfen (nur lesen, -n)
+Pass 5: Checking group summary information
+/dev/loop0: 17/25600 files (5.9% non-contiguous), 2652/25600 blocks
+
+## 2. Beschädigen: Linkzähler einer Datei mit debugfs verfälschen (nur in der Image-Datei)
+debugfs 1.47.0 (5-Feb-2023)
+
+## 3. Erneut prüfen: Fehler werden gemeldet (Exitcode 4 = Fehler nicht korrigiert)
+Pass 1: Checking inodes, blocks, and sizes
+Pass 2: Checking directory structure
+Pass 3: Checking directory connectivity
+Pass 4: Checking reference counts
+Inode 14 ref count is 5, should be 1.  Fix? no
+
+Pass 5: Checking group summary information
+
+Exitcode: 4
+
+## 4. Reparieren (-y beantwortet alle Fragen mit ja)
+Pass 1: Checking inodes, blocks, and sizes
+Pass 2: Checking directory structure
+Pass 3: Checking directory connectivity
+Pass 4: Checking reference counts
+Inode 14 ref count is 5, should be 1.  Fix? yes
+
+Pass 5: Checking group summary information
+
+Exitcode: 1
+
+## 5. Danach sauber, Dateien noch vorhanden
+e2fsck 1.47.0 (5-Feb-2023)
+/dev/loop0: 17/25600 files (5.9% non-contiguous), 2652/25600 blocks
+datei1.txt
+datei2.txt
+datei3.txt
+datei4.txt
+datei5.txt
+ordner

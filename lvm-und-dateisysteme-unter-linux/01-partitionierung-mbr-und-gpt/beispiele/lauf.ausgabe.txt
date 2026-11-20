@@ -1,0 +1,10 @@
+MBR: Sektornummer 32 Bit
+  Sektor  512 Byte: höchstens 2.00 TiB
+  Sektor 4096 Byte: höchstens 16.00 TiB
+GPT: Sektornummer 64 Bit
+  Sektor  512 Byte: höchstens 8.00 ZiB
+  Sektor 4096 Byte: höchstens 64.00 ZiB
+
+Partitionen: MBR 4 primäre (oder 3 + 1 erweiterte); GPT in der Regel 128 Einträge (Standardwert)
+
+Platte mit 3.00 TiB: MBR nutzbar 2.00 TiB, ungenutzt 1.00 TiB

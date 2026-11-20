@@ -1,0 +1,19 @@
+
+## 1. Belegung (df) und Inodes (df -i) bei einem Dateisystem mit nur 200 Inodes
+Platz:  Größe 16M, belegt 24K, frei 15M, 1%
+Inodes: gesamt 208, belegt 11, frei 197, 6%
+
+## 2. Viele kleine Dateien anlegen, bis es nicht mehr geht
+Dateien angelegt: 197
+touch: cannot touch '.../m/noch_eine': No space left on device
+
+## 3. Platz ist frei, Inodes sind aufgebraucht
+Platz:  belegt 24K, frei 15M, 1%
+Inodes: frei 0, 100%
+
+## 4. Größte Verzeichnisse und Dateien finden (du, find)
+mkdir: cannot create directory '/tmp/p54/m/gross': No space left on device
+(Anlegen scheitert: keine Inodes mehr frei)
+3000	.../m/a.bin
+1000	.../m/b.bin
+3072000 .../m/a.bin

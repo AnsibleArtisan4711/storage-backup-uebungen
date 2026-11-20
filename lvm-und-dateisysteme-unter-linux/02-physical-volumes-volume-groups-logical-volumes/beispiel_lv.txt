@@ -1,0 +1,6 @@
+# Befehle für Logical Volumes (NICHT AUSGEFÜHRT: im Test-Container fehlt Device-Mapper; aus Fachwissen, nicht bestätigt)
+lvcreate -L 200M -n daten vgdaten          # Logical Volume mit fester Größe
+lvcreate -l 100%FREE -n rest vgdaten       # den gesamten freien Platz
+lvs                                        # Übersicht der Logical Volumes
+ls /dev/vgdaten/daten                      # Gerätedatei (Link auf /dev/mapper/vgdaten-daten)
+lvremove vgdaten/daten                     # entfernen (Daten gehen verloren)

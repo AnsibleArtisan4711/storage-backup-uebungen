@@ -1,0 +1,11 @@
+Merkmal                          ext4                                 XFS                                      Status
+Journal                          ja (Metadaten, optional Daten)       ja (Metadaten)                           F
+Vergrößern im laufenden Betrieb  ja (resize2fs)                       ja (xfs_growfs)                          L
+Verkleinern                      ja, nur ausgehängt (resize2fs)       nein (im Lauf abgelehnt)                 L
+Inodes                           beim Anlegen festgelegt              dynamisch                                L
+Dateisystemprüfung               e2fsck (ausgehängt)                  xfs_repair (ausgehängt)                  L
+Quotas                           Benutzer, Gruppe, Projekt            Benutzer, Gruppe, Projekt                L
+Typischer Einsatz                Allzweck, kleine bis mittlere Systeme große Dateien, viele parallele Zugriffe  F
+Maximale Größe                   nach Dokumentation prüfen            nach Dokumentation prüfen                F
+
+L geprüft: 5, F nicht bestätigt: 3

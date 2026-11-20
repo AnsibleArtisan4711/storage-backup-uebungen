@@ -1,0 +1,9 @@
+/        Platz    62 %  ok
+/        Inodes   40 %  ok
+/var     Platz    83 %  WARNUNG
+/var     Inodes   12 %  ok
+/daten   Platz    91 %  KRITISCH
+/daten   Inodes   95 %  KRITISCH
+/backup  Platz    45 %  ok
+/backup  Inodes   97 %  KRITISCH
+Exitcode: 2

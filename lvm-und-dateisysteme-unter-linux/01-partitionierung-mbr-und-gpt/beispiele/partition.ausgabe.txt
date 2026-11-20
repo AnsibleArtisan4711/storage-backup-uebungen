@@ -1,0 +1,21 @@
+
+## 1. GPT anlegen: zwei Partitionen (50 MiB und Rest)
+$ sfdisk -q /tmp/p54/a.img
+
+## 2. Tabelle lesen (sfdisk -l, Kennung ausgeblendet)
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+
+Device           Start    End Sectors  Size Type
+/tmp/p54/a.img1   2048 104447  102400   50M Linux filesystem
+/tmp/p54/a.img2 104448 407551  303104  148M Linux filesystem
+
+## 3. Dieselbe Platte als MBR (msdos) neu aufteilen: vier primäre Partitionen sind das Maximum
+$ sfdisk -q /tmp/p54/a.img
+Disklabel type: dos
+/tmp/p54/a.img1        2048  43007   40960  20M 83 Linux
+/tmp/p54/a.img2       43008  83967   40960  20M 83 Linux
+/tmp/p54/a.img3       83968 124927   40960  20M 83 Linux
+/tmp/p54/a.img4      124928 165887   40960  20M 83 Linux

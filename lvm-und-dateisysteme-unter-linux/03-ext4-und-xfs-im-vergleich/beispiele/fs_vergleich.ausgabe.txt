@@ -1,0 +1,34 @@
+
+## 1. Dateisysteme anlegen
+ext4 angelegt
+xfs angelegt
+
+## 2. Typ, Bezeichnung und Größe (blkid, df)
+LABEL=daten_ext4
+TYPE=ext4
+LABEL=daten_xfs
+TYPE=xfs
+Type  Size  Used Avail
+ext4  284M   24K  262M
+xfs   256M   22M  235M
+
+## 3. Inodes: ext4 legt sie beim Anlegen fest, XFS vergibt sie dynamisch
+Dateisystem  Inodes  belegt  frei
+loop 81936 11 81925
+loop 163840 3 163837
+
+## 4. Eigenschaften (tune2fs und xfs_info, Auszug)
+Filesystem features:      has_journal ext_attr resize_inode dir_index filetype needs_recovery extent 64bit fle
+Inode count:              81936
+Block size:               4096
+Journal inode:            8
+Journal backup:           inode blocks
+meta-data=/dev/loop1             isize=512    agcount=4, agsize=20480 blks
+data     =                       bsize=4096   blocks=81920, imaxpct=25
+naming   =version 2              bsize=4096   ascii-ci=0, ftype=1
+
+## 5. Eine Datei und ein Verzeichnis anlegen und Rechte ansehen
+-rw-r--r-- 6 .../e/test.txt
+-rw-r--r-- 6 .../x/test.txt
+
+## 6. Vergrößern geht bei beiden, Verkleinern nur bei ext4 (siehe Modul 4)

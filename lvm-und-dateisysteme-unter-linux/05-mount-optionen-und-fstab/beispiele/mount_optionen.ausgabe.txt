@@ -1,0 +1,21 @@
+
+## 1. Normal einbinden: Skript ausführbar
+$ /tmp/p54/m/skript.sh
+Skript läuft
+
+## 2. Mit noexec: Ausführen wird verweigert
+05-mount-optionen-und-fstab/mount_optionen.sh: line 10: .../m/skript.sh: Permission denied
+
+## 3. Mit ro: Schreiben wird verweigert
+touch: cannot touch '.../m/neu': Read-only file system
+
+## 4. Optionen im laufenden Betrieb ändern (remount)
+ro
+rw
+
+## 5. fstab-Datei prüfen (eigene Datei, nicht /etc/fstab)
+
+0 parse errors, 2 errors, 0 warnings
+/mnt/x
+   [E] unreachable on boot required target: No such file or directory
+   [E] unreachable on boot required source: UUID=gibt-es-nicht

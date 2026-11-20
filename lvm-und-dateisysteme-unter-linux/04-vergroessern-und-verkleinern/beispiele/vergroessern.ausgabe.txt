@@ -1,0 +1,27 @@
+
+## 1. Ausgangslage
+Type  Size  Used
+ext4   90M   21M
+xfs   256M   42M
+
+## 2. Images vergrößern (ext4 auf 300 MiB, XFS auf 420 MiB), dann ext4 anpassen
+(Online-Vergrößerung von ext4 wurde im Container verweigert; hier daher ausgehängt, mit vorheriger Prüfung. Auf einem normalen System geht es eingehängt.)
+/dev/loop0: 12/25600 files (16.7% non-contiguous), 7766/25600 blocks
+
+
+## 3. XFS anpassen (xfs_growfs arbeitet auf dem eingehängten Dateisystem)
+(xfs_growfs ausgeführt)
+Type  Size  Used
+ext4  278M   21M
+xfs   356M   44M
+
+## 4. ext4 verkleinern: aushängen, prüfen, verkleinern
+/dev/loop0: 12/76800 files (16.7% non-contiguous), 10984/76800 blocks
+
+Type  Size  Used
+ext4   70M   21M
+Daten noch da: 20971520 Bytes
+
+## 5. XFS verkleinern: nicht unterstützt
+[EXPERIMENTAL] try to shrink unused space 20000, old size is 107520
+xfs_growfs: XFS_IOC_FSGROWFSDATA xfsctl failed: Invalid argument

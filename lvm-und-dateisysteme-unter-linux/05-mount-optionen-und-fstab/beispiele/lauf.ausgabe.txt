@@ -1,0 +1,5 @@
+UUID=1234 /daten ext4 defaults 0 2            ok
+/dev/sdb1 /backup ext4 defaults 0 2           Gerätename kann sich ändern: UUID verwenden
+UUID=5678 /srv xfs defaults 0 1               fsck-Reihenfolge bei XFS ohne Wirkung (0 üblich)
+UUID=9abc /tmp tmpfs defaults                 4 statt 6 Felder
+UUID=def0 /home ext4 defaults,noexec 0 2      noexec auf /home kann Programme der Benutzer blockieren
