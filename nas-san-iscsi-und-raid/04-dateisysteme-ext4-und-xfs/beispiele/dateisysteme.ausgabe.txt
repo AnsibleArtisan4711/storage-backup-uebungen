@@ -1,0 +1,59 @@
+
+## 1. ext4 anlegen und Eckdaten lesen
+$ mkfs.ext4 -q -L daten-ext4 /dev/loop0
+Filesystem volume name: daten-ext4
+Filesystem features: has_journal ext_attr resize_inode dir_index filetype extent 64bit flex_bg sparse_super large_file huge_file dir_nlink extra_isize metadata_csum
+Inode count: 16384
+Block size: 4096
+
+## 2. XFS anlegen und Eckdaten lesen
+$ mkfs.xfs -q -L datenxfs /dev/loop1
+meta-data=/dev/loop1 isize=512 agcount=4, agsize=19200 blks
+data = bsize=4096 blocks=76800, imaxpct=25
+naming =version 2 bsize=4096 ascii-ci=0, ftype=1
+log =internal log bsize=4096 blocks=16384, version=2
+
+## 3. Beide einbinden und vergleichen
+$ df -T /tmp/p33/mnt /tmp/p33/mnt-x
+Filesystem     Type 1K-blocks  Used Available Use% Mounted on
+/dev/loop0     ext4     57300    24     52692   1% /tmp/p33/mnt
+/dev/loop1     xfs     241664 20304    221360   9% /tmp/p33/mnt-x
+
+## 4. Vergrößern: Image erweitern, Loop-Gerät aktualisieren
+$ e2fsck -fn /dev/loop0
+e2fsck 1.47.0 (5-Feb-2023)
+Pass 1: Checking inodes, blocks, and sizes
+Pass 2: Checking directory structure
+Pass 3: Checking directory connectivity
+Pass 4: Checking reference counts
+Pass 5: Checking group summary information
+daten-ext4: 11/16384 files (9.1% non-contiguous), 2065/16384 blocks
+The filesystem on /dev/loop0 is now 32768 (4k) blocks long.
+/dev/loop0      120M   24K  111M   1% /tmp/p33/mnt
+$ xfs_growfs /tmp/p33/mnt-x
+meta-data=/dev/loop1             isize=512    agcount=4, agsize=19200 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=1, sparse=1, rmapbt=1
+         =                       reflink=1    bigtime=1 inobtcount=1 nrext64=0
+data     =                       bsize=4096   blocks=76800, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0, ftype=1
+log      =internal log           bsize=4096   blocks=16384, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+data blocks changed from 76800 to 102400
+/dev/loop1      336M   22M  315M   7% /tmp/p33/mnt-x
+
+## 5. Prüfen (nur lesend): ext4 mit e2fsck -n, XFS mit xfs_repair -n
+$ e2fsck -fn /dev/loop0
+e2fsck 1.47.0 (5-Feb-2023)
+Pass 1: Checking inodes, blocks, and sizes
+Pass 2: Checking directory structure
+Pass 3: Checking directory connectivity
+Pass 4: Checking reference counts
+Pass 5: Checking group summary information
+daten-ext4: 11/16384 files (9.1% non-contiguous), 2065/32768 blocks
+$ xfs_repair -n /dev/loop1 (nur Anfang und Ende der Ausgabe)
+Phase 1 - find and verify superblock...
+Phase 2 - using internal log
+No modify flag set, skipping filesystem flush and exiting.

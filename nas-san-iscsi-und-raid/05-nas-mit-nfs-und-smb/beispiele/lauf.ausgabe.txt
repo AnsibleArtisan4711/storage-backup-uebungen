@@ -1,0 +1,16 @@
+Datei: beispiel_exports
+  Zeile 3   /srv/nfs/backup no_root_squash für 10.33.0.10: root des Clients ist root auf dem Server
+  Zeile 4   /srv/nfs/oeffentlich für alle Clients freigegeben (*(rw,async,insecure))
+  Zeile 4   /srv/nfs/oeffentlich schreibbar für alle Clients
+  Zeile 4   /srv/nfs/oeffentlich async für *: Daten können bei Absturz verloren gehen
+  Zeile 4   /srv/nfs/oeffentlich insecure für *: Quellports über 1024 erlaubt
+  -> 5 Hinweis(e)
+
+Datei: beispiel_smb.conf
+  Zeile 4   global       veraltetes Protokoll erlaubt (nt1)
+  Zeile 5   global       map to guest = bad user: unbekannte Benutzer werden als Gast angemeldet
+  Zeile 9   projekte     schreibbar (prüfen, wer schreiben darf)
+  Zeile 14  gast         Gastzugriff erlaubt
+  Zeile 15  gast         schreibbar (prüfen, wer schreiben darf)
+  -> 5 Hinweis(e)
+

@@ -1,0 +1,17 @@
+## Rebuild-Zeit (eine Platte ersetzen, Rate 150 MB/s als Annahme)
+Plattengröße  Last 0 %  Last 50 %  Last 80 %
+        2 TB       3.7h       7.4h      18.5h
+        8 TB      14.8h      29.6h      74.1h
+       16 TB      29.6h      59.3h     148.1h
+Während des Rebuilds fehlt bei RAID 5 die Reserve; je länger das Fenster, desto größer das Risiko eines zweiten Fehlers.
+
+## USV-Laufzeit (Annahmen: Nennlast der Geräte und nutzbare Batteriekapazität)
+  Last 150 W bei 120 Wh Batterie, Wirkungsgrad 0,85 ->  40.8 Minuten
+  Last 300 W bei 120 Wh Batterie, Wirkungsgrad 0,85 ->  20.4 Minuten
+  Last 600 W bei 120 Wh Batterie, Wirkungsgrad 0,85 ->  10.2 Minuten
+
+Benötigte Zeit zum sauberen Herunterfahren (Annahme): 8 Minuten
+  Last 150 W: reicht (40.8 Minuten gegen 12)
+  Last 300 W: reicht (20.4 Minuten gegen 12)
+  Last 600 W: reicht NICHT (Faktor 1,5 Sicherheitsreserve) (10.2 Minuten gegen 12)
+Hinweis: Batterien altern; die Laufzeit sinkt über die Jahre. Messen und regelmäßig testen.

@@ -1,0 +1,14 @@
+aktiv/passiv, alle Pfade intakt
+  Verteilung: {'pfad-A': 12, 'pfad-B': 0}
+aktiv/passiv, pfad-A fällt vor E/A 7 aus
+  E/A  7: >>> pfad-A fällt aus <<<
+  E/A  7: Umschaltung auf pfad-B
+  Verteilung: {'pfad-A': 6, 'pfad-B': 6}
+round-robin, alle Pfade intakt
+  Verteilung: {'pfad-A': 6, 'pfad-B': 6}
+round-robin, pfad-A fällt vor E/A 7 aus
+  E/A  7: >>> pfad-A fällt aus <<<
+  Verteilung: {'pfad-A': 3, 'pfad-B': 9}
+
+Modell-Aussage: Mit Multipath bleibt der Speicher erreichbar, solange mindestens ein Pfad lebt; ohne Multipath würde jede
+E/A nach dem Ausfall des Pfades scheitern oder das Gerät verschwinden. Echtes Verhalten (Zeitüberschreitungen, Umschaltzeit) ist nicht modelliert.

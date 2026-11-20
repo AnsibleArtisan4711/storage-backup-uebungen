@@ -1,0 +1,5 @@
+# Beispiel-Exports (erfunden): Zeilen im Format  Verzeichnis  Client(Optionen)
+/srv/nfs/projekte   10.33.0.0/24(rw,sync,no_subtree_check)
+/srv/nfs/backup     10.33.0.10(rw,sync,no_root_squash)
+/srv/nfs/oeffentlich *(rw,async,insecure)
+/srv/nfs/iso        10.33.0.0/24(ro,sync) 10.34.0.0/24

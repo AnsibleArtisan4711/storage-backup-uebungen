@@ -1,0 +1,34 @@
+
+## 1. Ziel (Target) mit Namen im IQN-Format anlegen
+$ tgtadm --lld iscsi --mode target --op new --tid 1 --targetname iqn.2026-11.example.com:lab.ziel1
+
+## 2. LUN aus einer Image-Datei (statt einer echten Platte) anlegen
+$ tgtadm --lld iscsi --mode logicalunit --op new --tid 1 --lun 1 --backing-store /tmp/p33/lun1.img --bstype rdwr
+
+## 3. Zugriff nur für einen Initiator-Namen (ACL)
+$ tgtadm --lld iscsi --mode target --op bind --tid 1 --initiator-name iqn.2026-11.example.com:lab.init1
+
+## 4. CHAP-Konto anlegen und an das Ziel binden
+$ tgtadm --lld iscsi --mode account --op new --user lab --password geheim123456
+$ tgtadm --lld iscsi --mode account --op bind --tid 1 --user lab
+
+## 5. Zustand lesen (Auszug)
+Target 1: iqn.2026-11.example.com:lab.ziel1
+ Driver: iscsi
+ State: ready
+ LUN: 0
+ Type: controller
+ Size: 0 MB, Block size: 1
+ Backing store path: None
+ LUN: 1
+ Type: disk
+ Size: 34 MB, Block size: 512
+ Backing store path: /tmp/p33/lun1.img
+ Account information:
+ lab
+ ACL information:
+ iqn.2026-11.example.com:lab.init1
+
+## 6. Dienst und Port
+Portal: 127.0.0.1:3260
+LISTEN 127.0.0.1:3260

@@ -1,0 +1,30 @@
+
+## 1. Ein 64-MB-Image als Block-Gerät einbinden (Loop-Gerät)
+Gerät: /dev/loop0
+$ blockdev --getsize64 /dev/loop0
+67108864
+$ blkid /dev/loop0
+(blkid ohne Ausgabe: kein Dateisystem, nur rohe Blöcke)
+
+## 2. Rohe Blöcke lesen und schreiben (ohne Dateisystem)
+Rohdaten im Block 0
+
+## 3. Dateisystem anlegen und einbinden: jetzt gibt es Dateien
+$ mkfs.ext4 -q -L daten /dev/loop0
+$ blkid -o export /dev/loop0
+DEVNAME=/dev/loop0
+LABEL=daten
+UUID=42aeaebc-eed0-498c-b71b-34ec25757962
+BLOCK_SIZE=4096
+TYPE=ext4
+$ mount /dev/loop0 /tmp/p33/mnt
+$ ls /tmp/p33/mnt
+hallo.txt
+lost+found
+$ df -T /tmp/p33/mnt
+Filesystem     Type 1K-blocks  Used Available Use% Mounted on
+/dev/loop0     ext4     57300    28     52688   1% /tmp/p33/mnt
+
+## 4. Aufteilung der Zuständigkeit
+Block-Zugriff (SAN, iSCSI): der Client legt das Dateisystem an und verwaltet es.
+Datei-Zugriff (NAS, NFS/SMB): der Server verwaltet das Dateisystem, der Client sieht Dateien.

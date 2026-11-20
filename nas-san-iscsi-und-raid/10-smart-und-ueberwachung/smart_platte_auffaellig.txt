@@ -1,0 +1,9 @@
+ID# ATTRIBUTE_NAME          FLAG     VALUE WORST THRESH TYPE      UPDATED  WHEN_FAILED RAW_VALUE
+  5 Reallocated_Sector_Ct   0x0033   092   092   010    Pre-fail  Always       -       184
+  9 Power_On_Hours          0x0032   061   061   000    Old_age   Always       -       39870
+187 Reported_Uncorrect      0x0032   097   097   000    Old_age   Always       -       3
+188 Command_Timeout         0x0032   100   099   000    Old_age   Always       -       12
+194 Temperature_Celsius     0x0022   045   040   000    Old_age   Always       -       55
+197 Current_Pending_Sector  0x0012   098   098   000    Old_age   Always       -       8
+198 Offline_Uncorrectable   0x0010   098   098   000    Old_age   Offline      -       8
+199 UDMA_CRC_Error_Count    0x003e   200   200   000    Old_age   Always       -       0

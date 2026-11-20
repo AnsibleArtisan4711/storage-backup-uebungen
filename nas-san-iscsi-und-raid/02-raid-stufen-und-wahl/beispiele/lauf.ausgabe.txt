@@ -1,0 +1,28 @@
+4 Platten zu je 8000 GB (Annahme URE-Rate 1e-14 je gelesenes Bit)
+Stufe     nutzbar GB  Anteil  Ausfall verkraftet           Schreib-I/O*
+RAID 0         32000   100%  keine                                   1
+RAID 1          8000    25%  3 Platte(n)                             4
+RAID 5         24000    75%  1 Platte                                4
+RAID 6         16000    50%  2 Platten                               6
+RAID 10        16000    50%  1 je Spiegelpaar (mind. 1)              2
+* theoretische Platten-I/Os je kleinem Schreibvorgang (read-modify-write); reale Werte hängen von Cache und Controller ab
+
+Rebuild-Risiko nach Ausfall einer Platte (Lesen aller verbleibenden Platten):
+  RAID 5: 3 Platten lesen = 24 TB -> Wahrscheinlichkeit mindestens eines Lesefehlers rund 85%  (keine Reserve mehr)
+  RAID 6: 3 Platten lesen = 24 TB -> Wahrscheinlichkeit mindestens eines Lesefehlers rund 85%  (RAID 6 hat noch Paritätsreserve)
+Hinweis: Das ist ein Modell mit angenommener Fehlerrate, keine Vorhersage für ein bestimmtes Laufwerk.
+
+## Mit 6 Platten zu 4000 GB und besserer URE-Rate
+6 Platten zu je 4000 GB (Annahme URE-Rate 1e-15 je gelesenes Bit)
+Stufe     nutzbar GB  Anteil  Ausfall verkraftet           Schreib-I/O*
+RAID 0         24000   100%  keine                                   1
+RAID 1          4000    17%  5 Platte(n)                             6
+RAID 5         20000    83%  1 Platte                                4
+RAID 6         16000    67%  2 Platten                               6
+RAID 10        12000    50%  1 je Spiegelpaar (mind. 1)              2
+* theoretische Platten-I/Os je kleinem Schreibvorgang (read-modify-write); reale Werte hängen von Cache und Controller ab
+
+Rebuild-Risiko nach Ausfall einer Platte (Lesen aller verbleibenden Platten):
+  RAID 5: 5 Platten lesen = 20 TB -> Wahrscheinlichkeit mindestens eines Lesefehlers rund 15%  (keine Reserve mehr)
+  RAID 6: 5 Platten lesen = 20 TB -> Wahrscheinlichkeit mindestens eines Lesefehlers rund 15%  (RAID 6 hat noch Paritätsreserve)
+Hinweis: Das ist ein Modell mit angenommener Fehlerrate, keine Vorhersage für ein bestimmtes Laufwerk.

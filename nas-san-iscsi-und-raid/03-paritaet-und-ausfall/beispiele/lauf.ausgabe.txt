@@ -1,0 +1,28 @@
+5 Streifen, 4 Platten, Chunk 4 Bytes. Parität je Streifen auf Platte: [3, 2, 1, 0, 3]
+Streifen 0 (hex): ['52414944', '2d506172', '69746165', '16654953'] -> Parität auf Platte 3
+
+Lesen ohne Ausfall:       RAID-Paritaet mit XOR zeigt, wie ein Ausfall berechnet wird
+Platte 0 ausgefallen -> rekonstruiert: ja, identisch
+Platte 1 ausgefallen -> rekonstruiert: ja, identisch
+Platte 2 ausgefallen -> rekonstruiert: ja, identisch
+Platte 3 ausgefallen -> rekonstruiert: ja, identisch
+
+## Zwei Ausfälle: nicht rekonstruierbar (RAID 5 verkraftet nur eine Platte)
+Platten 0 und 1 fehlen: bekannt ist nur die XOR-Summe der beiden fehlenden Chunks: 7f112836 -> Einzelwerte nicht eindeutig
+
+## Write Hole: Daten geschrieben, Parität noch nicht (Stromausfall mitten im Schreibvorgang)
+Platte 1: Chunk b'-Par' -> b'NEUE', Parität unverändert
+Danach fällt Platte 0 aus. Rekonstruktion identisch zum Soll? NEIN
+Der rekonstruierte Chunk der ausgefallenen Platte ist falsch, ohne dass es ein Fehlersignal gibt.
+Gegenmittel (Fachwissen, hier nicht ausgeführt): Journal, batteriegepufferter Cache, USV.
+
+## Echtes mdadm-RAID im Container: nicht möglich (kein md-Kernelmodul)
+$ mdadm --version
+mdadm - v4.3 - 2024-02-15 - Ubuntu 4.3-1ubuntu2.1
+$ mdadm --create /dev/md0 --level=5 --raid-devices=3 /dev/loop0 /dev/loop1 /dev/loop2 --run
+sh: 1: modprobe: not found
+mdadm: Fail to create md0 when using /sys/module/md_mod/parameters/new_array, fallback to creation via node
+sh: 1: modprobe: not found
+mdadm: Fail to create md0 when using /sys/module/md_mod/parameters/new_array, fallback to creation via node
+mdadm: unexpected failure opening /dev/md0
+Rückgabecode: 1

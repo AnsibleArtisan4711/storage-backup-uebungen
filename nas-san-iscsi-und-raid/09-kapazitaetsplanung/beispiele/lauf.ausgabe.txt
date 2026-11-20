@@ -1,0 +1,16 @@
+Bestand 9.0 TB, Wachstum 25 %/Jahr, Reserve 20%, 6 Platten zu 4 TB
+Stufe    nutzbar TB ohne Reserve Jahre bis voll
+RAID 5           20         16.0            2.6
+RAID 6           16         12.8            1.6
+RAID 10          12          9.6            0.3
+
+Bestand je Jahr (RAID 6, mit Reserve gerechnet):
+  Jahr 0:   9.0 TB von 12.8 TB ( 70%)
+  Jahr 1:  11.2 TB von 12.8 TB ( 88%)
+  Jahr 2:  14.1 TB von 12.8 TB (110%)  <- voll
+  Jahr 3:  17.6 TB von 12.8 TB (137%)  <- voll
+  Jahr 4:  22.0 TB von 12.8 TB (172%)  <- voll
+  Jahr 5:  27.5 TB von 12.8 TB (215%)  <- voll
+
+Thin Provisioning (Modell): 10 Freigaben zu je 2 TB zugesagt = 20 TB; tatsächlich belegt je Freigabe 0,9 TB = 9.0 TB.
+Überzeichnung: 1.6x der nutzbaren Kapazität. Das geht nur gut, solange die Belegung überwacht wird.

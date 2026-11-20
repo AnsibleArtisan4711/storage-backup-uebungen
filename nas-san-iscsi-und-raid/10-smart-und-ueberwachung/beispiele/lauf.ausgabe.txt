@@ -1,0 +1,26 @@
+## 1. smartctl gegen ein virtuelles Loop-Gerät: keine SMART-Daten
+smartctl 7.4 2023-08-01 r5530 [x86_64-linux-6.18.44-fc-v726] (local build)
+$ smartctl -i /dev/loop0
+smartctl 7.4 2023-08-01 r5530 [x86_64-linux-6.18.44-fc-v726] (local build)
+Copyright (C) 2002-23, Bruce Allen, Christian Franke, www.smartmontools.org
+
+/dev/loop0: Unable to detect device type
+Please specify device type with the -d option.
+
+Use smartctl -h to get a usage summary
+
+(Ein virtuelles Gerät hat kein SMART; in der Hyper-V-VM mit virtuellen Platten ist es ebenso. SMART gibt es nur am echten Laufwerk.)
+
+## 2. Auswertung erfundener smartctl-Ausgaben
+Datei: smart_platte_gut.txt
+  -> 0 Hinweis(e) (unauffällig)
+
+Datei: smart_platte_auffaellig.txt
+    5 Reallocated_Sector_Ct: Rohwert 184 > 0 -> Reallocated_Sector_Ct (neu zugewiesene Sektoren): Platte beobachten, Ersatz planen
+  187 Reported_Uncorrect: Rohwert 3 > 0 -> Reported_Uncorrect (nicht korrigierbare Fehler): Platte beobachten, Ersatz planen
+  188 Command_Timeout: Rohwert 12 > 0 -> Command_Timeout: beobachten
+  194 Temperature_Celsius: 55 Grad (Annahme: über 50 Grad ist hoch)
+  197 Current_Pending_Sector: Rohwert 8 > 0 -> Current_Pending_Sector (Sektoren warten auf Neuzuweisung): Platte beobachten, Ersatz planen
+  198 Offline_Uncorrectable: Rohwert 8 > 0 -> Offline_Uncorrectable (offline nicht korrigierbar): Platte beobachten, Ersatz planen
+  -> 6 Hinweis(e)
+

@@ -1,0 +1,31 @@
+
+## 1. Erlaubter Initiator: Ziele entdecken (Discovery) und LUN abfragen
+$ timeout 10 iscsi-ls -i iqn.2026-11.example.com:lab.init1 iscsi://127.0.0.1:3260
+Target:iqn.2026-11.example.com:lab.ziel1 Portal:127.0.0.1:3260,1
+--- Inquiry der LUN 1:
+Peripheral Device Type:DIRECT_ACCESS
+Vendor:IET     
+Product:VIRTUAL-DISK    
+--- Kapazität:
+RETURNED LOGICAL BLOCK ADDRESS:65535
+LOGICAL BLOCK LENGTH IN BYTES:512
+Total size:33554432
+
+## 2. Fremder Initiator-Name: Zugriff verweigert
+$ iscsi-inq -i iqn.2026-11.example.com:lab.fremd iscsi://127.0.0.1:3260/iqn.2026-11.example.com:lab.ziel1/1
+Login Failed. Failed to log in to target. Status: Target not found(515)
+
+## 3. CHAP aktivieren: ohne Konto abgelehnt, mit Konto erlaubt
+$ iscsi-inq (ohne Konto)
+Login Failed. Failed to log in to target. Status: Authentication failure(513)
+$ iscsi-inq (mit Konto lab)
+Peripheral Device Type:DIRECT_ACCESS
+
+## 4. Namen prüfen mit iqn_pruefen.py
+iqn.2026-11.example.com:lab.ziel1                ok mit Zusatzteil
+iqn.2026-11.example.com:lab.init1                ok mit Zusatzteil
+iqn.2026-13.example.com:x                        ungültig: Monat 13
+iqn.2026-11.example.com                          ok ohne Zusatzteil
+iqn.2026-11.Example.com:A                        ok mit Zusatzteil (Empfehlung: Domain klein schreiben)
+eui.0123456789ABCDEF                             ok (eui-Format)
+nonsense                                         ungültig: weder iqn.JJJJ-MM.domain[:text] noch eui.16-Hex
