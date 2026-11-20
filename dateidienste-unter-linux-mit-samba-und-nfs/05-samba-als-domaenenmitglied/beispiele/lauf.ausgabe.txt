@@ -1,0 +1,4 @@
+Loaded services file OK.
+Server role: ROLE_DOMAIN_MEMBER
+	realm = LAB.EXAMPLE
+	security = ADS

@@ -1,0 +1,22 @@
+
+## 1. Tippfehler in der Konfiguration: testparm findet unbekannte Parameter
+Unknown parameter encountered: "read onyl"
+Ignoring unknown parameter "read onyl"
+
+## 2. Typische Fehlermeldungen
+falsches Passwort:
+session setup failed: NT_STATUS_LOGON_FAILURE
+unbekannte Freigabe:
+tree connect failed: NT_STATUS_BAD_NETWORK_NAME
+unbekannter Benutzer:
+session setup failed: NT_STATUS_LOGON_FAILURE
+Server nicht erreichbar (falscher Port):
+do_connect: Connection to 127.0.0.1 failed (Error NT_STATUS_CONNECTION_REFUSED)
+
+## 3. Sicherung der Daten samt ACLs und Besitzer (tar --acls --xattrs)
+Datei gelöscht und aus der Sicherung wiederhergestellt:
+# owner: anna
+user:ben:r--
+
+## 4. Die Samba-Passwortdatenbank gehört in die Sicherung (Datei, keine Klartextpasswörter)
+passdb.tdb

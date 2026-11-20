@@ -1,0 +1,22 @@
+
+## 1. Konfiguration prüfen (testparm, Auszug)
+[global]
+	server role = standalone server
+	smb ports = 4455
+	workgroup = LAB
+[daten]
+	path = /tmp/p55/daten
+	read only = No
+
+## 2. Benutzer: Linux-Konto (ohne Anmeldung) und Samba-Passwort
+anna
+ben
+
+## 3. Server starten, Anmeldung und Dateien
+hallo.txt A 3
+
+## 4. Wem gehört die Datei auf dem Linux-Dateisystem?
+-rwxr--r-- anna anna hallo.txt
+
+## 5. Falsches Passwort
+session setup failed: NT_STATUS_LOGON_FAILURE

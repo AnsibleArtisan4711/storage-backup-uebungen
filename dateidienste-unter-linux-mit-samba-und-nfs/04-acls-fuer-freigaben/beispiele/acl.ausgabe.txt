@@ -1,0 +1,37 @@
+
+## 1. Ohne ACL: anna (nicht Eigentümerin, nicht in der Gruppe) hat keinen Zugriff
+NT_STATUS_ACCESS_DENIED listing \*
+
+## 2. ACL setzen: anna darf lesen und schreiben, ben nur lesen; Standard-ACL für neue Dateien
+$ setfacl -m u:anna:rwx,u:ben:rx /tmp/p55/ablage
+$ setfacl -d -m u:anna:rwx,u:ben:rx /tmp/p55/ablage
+# file: <W>/ablage
+# owner: root
+# group: root
+user::rwx
+user:anna:rwx
+user:ben:r-x
+group::r-x
+mask::rwx
+other::---
+default:user::rwx
+default:user:anna:rwx
+default:user:ben:r-x
+default:group::r-x
+default:mask::rwx
+default:other::---
+
+
+## 3. Zugriff über Samba
+anna:
+1
+ben schreibt:
+NT_STATUS_ACCESS_DENIED opening remote file \b.txt
+ben liest:
+getting file \a.txt
+
+## 4. Neue Datei erbt die Standard-ACL
+user::rwx
+user:anna:rwx	#effective:r--
+user:ben:r-x	#effective:r--
+mask::r--

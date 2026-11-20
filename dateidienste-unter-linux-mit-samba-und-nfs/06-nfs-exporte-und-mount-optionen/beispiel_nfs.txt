@@ -1,0 +1,10 @@
+# NFS (Textdatei, NICHT ausgeführt: im Test-Container war NFS nicht nutzbar; Fachwissen, nicht gegen die Dokumentation geprüft)
+# Server (Debian/Ubuntu, Paket nfs-kernel-server):
+/srv/daten 10.55.0.0/24(rw,sync,no_subtree_check)      # Zeile in /etc/exports
+exportfs -ra                                           # Exporte neu einlesen
+exportfs -v                                            # aktive Exporte anzeigen
+# Client (Paket nfs-common):
+showmount -e 10.55.0.2                                 # Exporte des Servers anzeigen
+mount -t nfs4 -o rw,hard,vers=4.2 10.55.0.2:/srv/daten /mnt/daten
+# /etc/fstab:
+10.55.0.2:/srv/daten /mnt/daten nfs4 rw,hard,_netdev 0 0

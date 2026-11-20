@@ -1,0 +1,11 @@
+/srv/daten 10.55.0.0/24(rw,sync,no_subtree_check)
+   -> ok
+/srv/backup *(rw,sync,no_root_squash)
+   -> Wildcard * erlaubt jeden Client
+   -> no_root_squash: root des Clients ist root auf dem Server
+/srv/info 10.55.0.0/24(ro,sync,root_squash)
+   -> ok
+/srv/tmp 10.55.0.0/24 (rw,sync)
+   -> Leerzeichen vor der Klammer: Optionen gelten dann für alle Clients, nicht für den genannten
+/srv/proj 10.55.0.20(rw,async,no_subtree_check)
+   -> async: Server bestätigt vor dem Schreiben auf die Platte (Datenverlust bei Absturz möglich)

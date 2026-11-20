@@ -1,0 +1,7 @@
+# Beitritt zur Domäne (Textdatei, NICHT ausgeführt; Fachwissen, nicht gegen die Dokumentation geprüft)
+# Voraussetzungen: DNS zeigt auf den Domänencontroller, Uhrzeit stimmt (Kerberos), Pakete samba, winbind, krb5-user
+kinit administrator@LAB.EXAMPLE        # Kerberos-Ticket holen
+net ads join -U administrator          # Rechner in die Domäne aufnehmen
+systemctl restart smbd winbind         # Dienste neu starten
+wbinfo -u                              # Domänenbenutzer anzeigen (prüft winbind)
+net ads testjoin                       # Beitritt prüfen

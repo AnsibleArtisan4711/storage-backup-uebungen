@@ -1,0 +1,16 @@
+
+## 1. Gruppenfreigabe: anna legt eine Datei an, ben liest sie
+-rw-rw---- anna projekt plan.txt
+getting file \plan.txt
+
+## 2. Freigabe mit read only und write list (nur anna schreibt)
+ben:
+NT_STATUS_ACCESS_DENIED opening remote file \x.txt
+anna:
+1
+
+## 3. valid users: ben darf nicht auf die Freigabe privat
+tree connect failed: NT_STATUS_ACCESS_DENIED
+
+## 4. Freigaberecht und Dateirecht wirken zusammen: Verzeichnis gehört root, Freigabe erlaubt schreiben
+NT_STATUS_ACCESS_DENIED opening remote file \y.txt
